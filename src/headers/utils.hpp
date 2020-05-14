@@ -1,0 +1,1 @@
+enum ModeLabel { simpleColor, animations, cinekave, off };
