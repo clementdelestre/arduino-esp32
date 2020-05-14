@@ -9,9 +9,6 @@
 #define BUTTON_STAIRS 35
 #define BUTTON_KAVE 32
 
-//SENSOR
-#define STAIRS_SENSOR 14
-
 // WIFI
 const char* ssid = "Devolo";
 const char* password = "Tatatoum";
@@ -23,12 +20,6 @@ WifiManager* wifiManager;
 //END WIFI
 
 LedsController* ledsController;
-
-//STAIRS SENSOR
-void updateStairsSensor(){
-  ledsController->setStairsSensorValue((digitalRead(STAIRS_SENSOR) == 1));
-}
-
 
 void setup() {
   Serial.begin(115200);
@@ -68,9 +59,6 @@ void setup() {
   wifiServer.setNoDelay(true);
 
   ledsController->init();
-
-  //stairs sensor
-  attachInterrupt(digitalPinToInterrupt(STAIRS_SENSOR), updateStairsSensor, CHANGE);
 }
 
 void loop() {

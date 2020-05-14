@@ -25,9 +25,10 @@ LedsController::LedsController(WifiManager* wifiManager){
     animationMode = new AnimationMode(this);
 
     //set initial mode
-    mode = simpleColorMode;
+    currentMode = simpleColorMode;
 
     stairsSensorValue = false;
+    useStairsSensor = false;
 }
 
 void LedsController::init(){
@@ -55,23 +56,26 @@ NeoPixelBus<NeoGrbFeature, NeoEsp32I2s1800KbpsMethod>* LedsController::getStairs
     return &stairsStrip;
 }
 
-Mode* LedsController::getMode(){
-    return mode;
+WifiManager* LedsController::getWifiManager(){
+    return wifiManager;
 }
 
-ModeLabel LedsController::getModeLabel(){
-    return modeLabel;
-}
-
-void LedsController::setMode(ModeLabel modeLabel){
+void LedsController::setMode(int modeLabel){
+    Serial.println("change mode");
+    wifiManager->sendAllClientData(Flags::CHANGE_MODE, modeLabel, 0, 0);
     switch (modeLabel)
     {
-    case simpleColor:
-        mode = simpleColorMode;
+    case ModeLabel::simpleColor:
+        currentMode = simpleColorMode;
+        simpleColorMode->sendModeData();
         break;
-    case animations:
-        mode = animationMode;
+    case ModeLabel::animations:
+        currentMode = animationMode;
         break;
+    case ModeLabel::cinekave:
+        currentMode = animationMode;
+    case ModeLabel::off:
+        currentMode = animationMode;
     }
 }
 
@@ -80,16 +84,37 @@ void LedsController::ledsThread(void * parameter){
     LedsController* ledsController = (LedsController*) parameter;
     
     while(true){     
-        ledsController->getMode()->displayMode();
+        ledsController->getCurrentMode()->displayMode();
     }
 
 }
 
-void LedsController::setStairsSensorValue(bool value){
-    stairsSensorValue = value;
+//STAIRS SENSOR
+
+void LedsController::setUseStairsSensor(bool value){
+    useStairsSensor = value;
+    wifiManager->sendAllClientData(Flags::SENSOR_STAIRS, value ? 1 : 0, 0, 0);
 }
 
-bool LedsController::getStairsSensorValue(){
-    return stairsSensorValue;
+bool LedsController::getUseStairsSensor(){
+    return useStairsSensor;
+}
+
+bool LedsController::canShowStairs(){
+    return !useStairsSensor || digitalRead(STAIRS_SENSOR) == 1;
+}
+
+//GET MODES
+
+Mode* LedsController::getCurrentMode(){
+    return currentMode;
+}
+
+SimpleColorsMode* LedsController::getSimpleColorMode(){
+    return simpleColorMode;
+}
+
+AnimationMode* LedsController::getAnimationMode(){
+    return animationMode;
 }
 

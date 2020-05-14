@@ -15,3 +15,7 @@ void Mode::displayMode(){
     Serial.println("Wrong function");
     delay(1000);
 }
+
+ModeLabel Mode::getModeLabel(){
+    return modeLabel;
+}

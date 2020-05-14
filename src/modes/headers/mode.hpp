@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <NeoPixelBus.h>
+#include "../../headers/utils.hpp"
 
 #ifndef MODE_H_INCLUDED
 #define MODE_H_INCLUDED
@@ -11,6 +12,7 @@ class Mode {
 
     protected:
         LedsController *ledsController;
+        ModeLabel modeLabel;
         
     public:
         
@@ -18,6 +20,7 @@ class Mode {
         void init();
 
         virtual void displayMode();
+        ModeLabel getModeLabel();
 
 };
 
