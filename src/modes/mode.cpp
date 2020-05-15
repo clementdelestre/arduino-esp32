@@ -16,6 +16,18 @@ void Mode::displayMode(){
     delay(1000);
 }
 
+void Mode::startMode(){
+    
+}
+
+void Mode::stopMode(){
+    
+}
+
+void Mode::sendModeData(){
+
+}
+
 ModeLabel Mode::getModeLabel(){
     return modeLabel;
 }

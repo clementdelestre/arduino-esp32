@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <NeoPixelBus.h>
-#include "../../headers/utils.hpp"
+#include "../../utils/headers/utils.hpp"
 
 #ifndef MODE_H_INCLUDED
 #define MODE_H_INCLUDED
@@ -20,6 +20,12 @@ class Mode {
         void init();
 
         virtual void displayMode();
+        
+        virtual void startMode();
+        virtual void stopMode();
+
+        virtual void sendModeData();
+
         ModeLabel getModeLabel();
 
 };

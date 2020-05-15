@@ -3,7 +3,8 @@
 /////  LEDS KAVE  /////
 
 #define KAVE_LED_PIN 26
-#define KAVE_LED_COUNT 357
+//357
+#define KAVE_LED_COUNT 66
 NeoPixelBus<NeoGrbFeature, NeoEsp32Rmt1800KbpsMethod> kaveStrip(KAVE_LED_COUNT, KAVE_LED_PIN);
 
 /////  END LEDS KAVE  /////
@@ -11,7 +12,8 @@ NeoPixelBus<NeoGrbFeature, NeoEsp32Rmt1800KbpsMethod> kaveStrip(KAVE_LED_COUNT, 
 /////  LEDS STAIRS  /////
 
 #define STAIRS_LED_PIN 27
-#define STAIRS_LED_COUNT 158
+//158
+#define STAIRS_LED_COUNT 66
 NeoPixelBus<NeoGrbFeature, NeoEsp32I2s1800KbpsMethod> stairsStrip(STAIRS_LED_COUNT, STAIRS_LED_PIN);
 
 /////  END LEDS STAIRS  /////
@@ -61,22 +63,35 @@ WifiManager* LedsController::getWifiManager(){
 }
 
 void LedsController::setMode(int modeLabel){
-    Serial.println("change mode");
-    wifiManager->sendAllClientData(Flags::CHANGE_MODE, modeLabel, 0, 0);
-    switch (modeLabel)
-    {
-    case ModeLabel::simpleColor:
-        currentMode = simpleColorMode;
-        simpleColorMode->sendModeData();
-        break;
-    case ModeLabel::animations:
-        currentMode = animationMode;
-        break;
-    case ModeLabel::cinekave:
-        currentMode = animationMode;
-    case ModeLabel::off:
-        currentMode = animationMode;
+
+
+    
+    if(modeLabel != currentMode->getModeLabel()){
+        Serial.println("change mode");
+        wifiManager->sendAllClientData(Flags::CHANGE_MODE, modeLabel, 0, 0);
+
+        currentMode->stopMode();
+
+        switch (modeLabel)
+        {
+        case ModeLabel::simpleColor:
+            currentMode = simpleColorMode;        
+            break;
+        case ModeLabel::animations:
+            currentMode = animationMode;
+            break;
+        case ModeLabel::cinekave:
+            currentMode = animationMode;
+        case ModeLabel::off:
+            currentMode = animationMode;
+        }
+
+        currentMode->startMode();
     }
+
+   currentMode->sendModeData();
+
+
 }
 
 void LedsController::ledsThread(void * parameter){

@@ -31,6 +31,7 @@ void WifiManager::scanClient(){
       if (i >= MAX_SRV_CLIENTS) {
         //no free/disconnected spot so reject
         wifiServer->available().stop();
+        disconnectAllClient();
       }
     }
     //check clients for data
@@ -68,6 +69,22 @@ void WifiManager::scanClient(){
             case Flags::SC_SPEED_ANIMATION:
               ledsController->getSimpleColorMode()->changeAnimationSpeed(buf[1]);
               break;
+            case Flags::A_NEXT_ANIMATION:
+              ledsController->getAnimationMode()->nextAnimation();
+              break;
+            case Flags::A_TYPE_ANIMATION:
+              ledsController->getAnimationMode()->setKaveList(buf[1]);
+              break;
+            case Flags::A_KEEP_ANIMATION:
+              ledsController->getAnimationMode()->setKeepAnimation(buf[1]==1);
+              break;
+            case Flags::A_STAIRS_RANDOM_ANIM:
+              ledsController->getAnimationMode()->setStairsRandomAnim(buf[1]==1);
+              break;
+            case Flags::A_STAIRS_CURRENT_ANIM:
+              ledsController->getAnimationMode()->setStairsAnim(buf[1]);
+              break;
+
 
             default:
               Serial.println("socket: wrong data!");
@@ -93,6 +110,12 @@ void WifiManager::scanClient(){
       if (serverClients[i]) serverClients[i].stop();
     }
     delay(1000);
+  }
+}
+
+void WifiManager::disconnectAllClient(){
+  for(int i = 0; i < MAX_SRV_CLIENTS; i++) {
+    serverClients[i].stop();
   }
 }
 

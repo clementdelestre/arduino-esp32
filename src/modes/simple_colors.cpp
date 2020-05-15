@@ -8,10 +8,12 @@ SimpleColorsMode::SimpleColorsMode(LedsController* ledsController) : Mode(ledsCo
 
 
      isAnimated = false;
-     animationSpeed = 50;
+     animationSpeed = 150;
 
-     kaveCurrentColor = RgbColor(255, 255, 255);
-     stairsCurrentColor = RgbColor(255, 255, 255);  
+     animInitColor = 0;
+
+     kaveCurrentColor = RgbColor(150, 150, 150);
+     stairsCurrentColor = RgbColor(150, 150, 150);  
 
      //stairs enable
      posStairsColor = 0;
@@ -23,11 +25,14 @@ SimpleColorsMode::SimpleColorsMode(LedsController* ledsController) : Mode(ledsCo
 
 }
 
+void SimpleColorsMode::startMode(){
+     sendModeData();
+}
 
 void SimpleColorsMode::displayMode(){
 
      if(isAnimated){
-          kaveCurrentColor = RgbColor().LinearBlend(kaveCurrentColor, targetColor, posColor);
+          kaveCurrentColor = RgbColor().LinearBlend(animInitColor, targetColor, posColor);
 
           ledsController->getKaveLeds()->ClearTo(kaveCurrentColor);
           ledsController->getKaveLeds()->Show();
@@ -48,14 +53,17 @@ void SimpleColorsMode::displayMode(){
                posStairsColor = 0;
                ledsController->getStairsLeds()->ClearTo(0);
                ledsController->getStairsLeds()->Show();
-          }         
+          }        
 
-          if(posColor >= 1){
+          posColor+=0.01; 
+
+          if(posColor > 1){
                posColor = 0;
+               animInitColor = targetColor;
                targetColor = Utils::getFixedRandomColor();
           }
 
-          posColor+=0.01;
+          
           delay(5 + (200-animationSpeed));
      } else {
           ledsController->getKaveLeds()->ClearTo(kaveCurrentColor);
@@ -93,8 +101,10 @@ void SimpleColorsMode::sendModeData(){
      ledsController->getWifiManager()->sendAllClientData(Flags::SENSOR_STAIRS, ledsController->getUseStairsSensor() ? 1 : 0, 0, 0);
 }
 
-void SimpleColorsMode::changeAnimated(bool animated){
+void SimpleColorsMode::changeAnimated(bool animated){     
      isAnimated = animated;
+     animInitColor = kaveCurrentColor;
+     posColor = 0;
      sendModeData();
 }
 

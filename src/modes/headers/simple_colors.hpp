@@ -12,6 +12,7 @@ class SimpleColorsMode : public Mode {
     private:
         bool isAnimated;
         int animationSpeed;
+        RgbColor animInitColor;
 
         RgbColor kaveCurrentColor;
         RgbColor stairsCurrentColor;
@@ -27,11 +28,12 @@ class SimpleColorsMode : public Mode {
     public:
         SimpleColorsMode(LedsController* ledsController);
         void displayMode() override; 
+        void startMode() override;
 
         void setKaveColor(RgbColor color);
         void setStairsColor(RgbColor color);
 
-        void sendModeData();
+        void sendModeData() override;
 
         void changeAnimated(bool animated);
         void changeAnimationSpeed(int speed);

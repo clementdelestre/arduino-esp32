@@ -23,6 +23,8 @@ enum Flags : int {
     A_START_STROBOSCOPE = 24,
     A_STOP_AUTO_STROBOSCOPE = 25,
     A_STROBOSCOPE_SPEED = 26,
+    A_STAIRS_RANDOM_ANIM = 27,
+    A_STAIRS_CURRENT_ANIM = 28
 
 };
 
@@ -36,7 +38,7 @@ class WifiManager {
         WiFiClient serverClients[MAX_SRV_CLIENTS];
         LedsController* ledsController;
         
-
+        void disconnectAllClient();
     public:
         WifiManager(WiFiServer* wifiServer, WiFiMulti* wifiMulti);
         void setLedsController(LedsController* ledsController);

@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <arduinoFFT.h>
 #include <NeoPixelBus.h>
-#include "headers/wifi_manager.hpp"
-#include "utils.hpp"
+#include "../utils/headers/wifi_manager.hpp"
+#include "../utils/headers/utils.hpp"
 
 #include "modes/headers/mode.hpp"
 #include "modes/headers/simple_colors.hpp"

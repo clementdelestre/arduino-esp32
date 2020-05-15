@@ -1,0 +1,17 @@
+"filename", "language", "C++", "comment", "blank", "total"
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animations_constructor.cpp", "C++", 11, 0, 3, 14
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/headers/animations_constructor.hpp", "C++", 17, 0, 9, 26
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/headers/leds_controller.hpp", "C++", 36, 1, 19, 56
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/headers/utils.hpp", "C++", 14, 0, 6, 20
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/headers/wifi_manager.hpp", "C++", 35, 2, 12, 49
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/leds_controller.cpp", "C++", 79, 9, 33, 121
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/main.cpp", "C++", 45, 6, 18, 69
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/animation.cpp", "C++", 8, 0, 5, 13
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/animation.hpp", "C++", 11, 0, 7, 18
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/mode.hpp", "C++", 17, 0, 10, 27
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/simple_colors.hpp", "C++", 25, 2, 14, 41
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/mode.cpp", "C++", 14, 0, 8, 22
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/simple_colors.cpp", "C++", 76, 2, 26, 104
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils.cpp", "C++", 23, 0, 8, 31
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/wifi_manager.cpp", "C++", 95, 6, 13, 114
+"Total", "-", 506, 28, 191, 725
