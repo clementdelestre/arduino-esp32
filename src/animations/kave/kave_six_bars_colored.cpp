@@ -1,5 +1,5 @@
 #include "headers/kave_six_bars_colored.hpp"
-#include "../headers/leds_controller.hpp"
+#include "../../headers/leds_controller.hpp"
 
 SixBarsColored::SixBarsColored(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){   
     backColor = Utils::getFixedRandomColor(); 

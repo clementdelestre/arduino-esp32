@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "animations_constructor.hpp"
+#include "../../headers/animations_constructor.hpp"
 
 #ifndef SIX_BARS_COLORED_H_INCLUDED
 #define SIX_BARS_COLORED_H_INCLUDED

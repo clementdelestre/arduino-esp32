@@ -70,10 +70,7 @@ void WifiManager::scanClient(){
               ledsController->getSimpleColorMode()->changeAnimationSpeed(buf[1]);
               break;
             case Flags::A_NEXT_ANIMATION:
-              ledsController->getAnimationMode()->nextAnimation();
-              break;
-            case Flags::A_TYPE_ANIMATION:
-              ledsController->getAnimationMode()->setKaveList(buf[1]);
+              ledsController->getAnimationMode()->nextKaveAnimation();
               break;
             case Flags::A_KEEP_ANIMATION:
               ledsController->getAnimationMode()->setKeepAnimation(buf[1]==1);
@@ -84,7 +81,30 @@ void WifiManager::scanClient(){
             case Flags::A_STAIRS_CURRENT_ANIM:
               ledsController->getAnimationMode()->setStairsAnim(buf[1]);
               break;
-
+            case Flags::A_MAIN_COLOR_AUT0:
+              ledsController->getAnimationMode()->setMainAutoColor(buf[1]==1);
+              break;
+            case Flags::A_MAIN_COLOR:
+              ledsController->getAnimationMode()->setMainColor(RgbColor(buf[1], buf[2], buf[3]));
+              break;
+            case Flags::A_SET_ENABLE_ANIMATION:
+              ledsController->getAnimationMode()->setEnableAnimation(buf[1], buf[2] == 1);
+              break;
+            case Flags::A_GET_ENABLED_ANIMATIONS:
+              ledsController->getAnimationMode()->sendEnabledAnimations(&serverClients[i]);
+              break;
+            case Flags::A_SELECT_ANIMATION:
+              ledsController->getAnimationMode()->setKaveAnimation(buf[1]);
+              break;
+            case Flags::A_START_STROBOSCOPE:
+              ledsController->getAnimationMode()->startStroboscope();
+              break;
+            case Flags::A_STROBOSCOPE_SPEED:
+              ledsController->getAnimationMode()->setStroboscopeSpeed(buf[1]);
+              break;
+            case Flags::A_STOP_AUTO_STROBOSCOPE:
+              ledsController->getAnimationMode()->setStroboscopeAutoStop(buf[1] == 1);
+              break;
 
             default:
               Serial.println("socket: wrong data!");

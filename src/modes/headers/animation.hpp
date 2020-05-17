@@ -1,33 +1,48 @@
 #include <Arduino.h>
+#include "WiFi.h"
+
 #include "mode.hpp"
 #include "animations/headers/animations_constructor.hpp"
 #include "../../utils/headers/microphone.hpp"
 
-#include "../../animations/headers/kave_white_dots.hpp"
-#include "../../animations/headers/kave_six_bars_colored.hpp"
+#include "../../animations/kave/headers/kave_off.hpp"
+#include "../../animations/kave/headers/kave_white_dots.hpp"
+#include "../../animations/kave/headers/kave_six_bars_colored.hpp"
+#include "../../animations/kave/headers/kave_centered_bar.hpp"
+#include "../../animations/kave/headers/kave_change_color.hpp"
+#include "../../animations/kave/headers/kave_strobodots.hpp"
+#include "../../animations/kave/headers/kave_colored_bars.hpp"
+#include "../../animations/kave/headers/kave_gradient_from_edges.hpp"
+#include "../../animations/kave/headers/kave_opacity.hpp"
 
-#include "../../animations/headers/stairs_rainbow.hpp"
-#include "../../animations/headers/stairs_fade_in.hpp"
+#include "../../animations/stairs/headers/stairs_rainbow.hpp"
+#include "../../animations/stairs/headers/stairs_fade_in.hpp"
+
+#include "../../animations/kave/headers/kave_stroboscope.hpp"
+#include "../../animations/stairs/headers/stairs_stroboscope.hpp"
 
 #ifndef ANIMATION_MODE_H_INCLUDED
 #define ANIMATION_MODE_H_INCLUDED
 
 class LedsController;
 
-enum AnimationKaveListLabel {
-    SOFT = 0,
-    ALL = 1,
-    HARD = 2
-};
-
-enum AnimationKaveLabel {
-    WHITE_DOTS = 0,
-    SIX_BARS_COLORED = 1
+enum AnimationKaveLabel {    
+    KAVE_OFF = 0,
+    KAVE_CHANGE_COLOR = 1,   
+    KAVE_STROBOSCOPE = 2,
+    KAVE_CENTERED_BAR = 3,
+    WHITE_DOTS = 4,
+    KAVE_STROBODOTS = 5,
+    KAVE_COLORED_BARS = 6,
+    KAVE_GRADIENT_FROM_EDGES = 7,
+    KAVE_OPACITY = 8,
+    SIX_BARS_COLORED = 9,
 };
 
 enum AnimationStairsLabel {
     RAINBOW = 0,
-    FADE_IN = 1
+    FADE_IN = 1,
+    STAIRS_STROBOSCOPE = 2,
 };
 
 class AnimationMode : public Mode {
@@ -38,27 +53,28 @@ class AnimationMode : public Mode {
         std::chrono::milliseconds durationAnim;
 
         bool keepAnimation;
+        bool mainAutoColor;
+        RgbColor mainColor;
 
         // KAVE
         Microphone* microphone;
 
         AnimationConstructor* currentKaveAnimation;
-        int currenKavetList;
 
         const  std::vector<int> listAllKaveAnimation = {
+            KAVE_OFF,
             WHITE_DOTS,
-            SIX_BARS_COLORED
+            SIX_BARS_COLORED,
+            KAVE_STROBOSCOPE,
+            KAVE_CENTERED_BAR,
+            KAVE_CHANGE_COLOR,
+            KAVE_STROBODOTS,
+            KAVE_COLORED_BARS,
+            KAVE_GRADIENT_FROM_EDGES,
+            KAVE_OPACITY,
         };
 
-        const  std::vector<int> listSoftKaveAnimation = {
-            SIX_BARS_COLORED
-        };
-
-        const  std::vector<int> listHardKaveAnimation = {
-            WHITE_DOTS
-        };
-
-        const std::vector<std::vector<int>> allListsKave = {listSoftKaveAnimation, listAllKaveAnimation, listHardKaveAnimation};
+        std::vector<int> listKaveActivatedAnimation;
 
 
         //STAIRS
@@ -70,8 +86,16 @@ class AnimationMode : public Mode {
         //number of animation, useful for random select
         const int countStairsAnim = 2;
 
+
+        //STROBOSCOPE
+        int stroboscopeSpeed;
+        bool stroboscopeAutoStop;
+        bool stroboscopeEnabled;
+        AnimationConstructor* stroboscopeOldStairsAnim;
+
     public:
         AnimationMode(LedsController* ledsController);
+        void init() override;
         void displayMode() override;
 
         void startMode() override;
@@ -79,20 +103,36 @@ class AnimationMode : public Mode {
 
         void sendModeData() override;
 
-        int selectNewKaveAnimation();
+        int selectRandomKaveAnimation();
+        int selectRandomStairsAnimation();
 
         //Change animation for Kave AND Stairs
-        void setAnimation(int kaveAnimation);
-        void nextAnimation();
+        void setKaveAnimation(int kaveAnimation);
+        void nextKaveAnimation();
 
-        void setKaveList(int typeAnimation);
         void setKeepAnimation(bool keep);
 
         void setStairsRandomAnim(bool random);
         void setStairsAnim(int anim);
 
+        void setMainAutoColor(bool autoColor);
+        bool getMainAutoColor();
+
+        void setMainColor(RgbColor color);
+        RgbColor getMainColor();
+
         Microphone* getMicrophone();
 
+        void setEnableAnimation(int animation, bool enable);
+        void sendEnabledAnimations(WiFiClient* client);
+
+        //STROBOSCOPE
+
+        void setStroboscopeSpeed(int speed);
+        int getStroboscopeSpeed();
+        void setStroboscopeAutoStop(bool autoStop);
+        void startStroboscope();
+        
 };
 
 #endif

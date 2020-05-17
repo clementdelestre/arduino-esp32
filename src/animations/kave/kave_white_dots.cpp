@@ -1,11 +1,18 @@
 #include "headers/kave_white_dots.hpp"
-#include "../headers/leds_controller.hpp"
+#include "../../headers/leds_controller.hpp"
 
-WhiteDots::WhiteDots(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){   
-    backColor = Utils::getFixedRandomColor(); 
+WhiteDots::WhiteDots(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){  
+
+    init();
+    
     refreshMs = std::chrono::milliseconds(20);   
 }
 
+void WhiteDots::init(){
+
+    backColor = getColorWithDefault(Utils::getFixedRandomColor()); 
+    
+}
 
 void WhiteDots::animationContent(){    
   
@@ -19,5 +26,4 @@ void WhiteDots::animationContent(){
 
     ledsController->getKaveLeds()->Show();
 
-    
 }

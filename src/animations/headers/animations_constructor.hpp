@@ -12,7 +12,7 @@ class LedsController;
 class AnimationConstructor {
 
     private:
-        std::chrono::milliseconds delay;
+        std::chrono::milliseconds pauseDelay;
         int flag;
 
     protected:
@@ -20,11 +20,14 @@ class AnimationConstructor {
         Microphone* microphone;
         std::chrono::milliseconds refreshMs;
 
+        RgbColor getColorWithDefault(RgbColor color);
+
 
     public:
         
         AnimationConstructor(LedsController* ledsController, Microphone* microphone, int flag);
         virtual void init();
+        virtual void eventClose();
 
         void displayAnimation();
         virtual void animationContent();

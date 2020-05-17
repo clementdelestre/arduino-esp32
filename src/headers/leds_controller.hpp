@@ -7,6 +7,7 @@
 #include "modes/headers/mode.hpp"
 #include "modes/headers/simple_colors.hpp"
 #include "modes/headers/animation.hpp"
+#include "modes/headers/power_off.hpp"
 
 //SENSOR
 #define STAIRS_SENSOR 14
@@ -24,6 +25,7 @@ class LedsController {
 
         SimpleColorsMode* simpleColorMode;
         AnimationMode* animationMode;
+        PowerOffMode* offMode;
 
         bool stairsSensorValue;
         bool useStairsSensor;

@@ -1,5 +1,5 @@
 #include "headers/stairs_rainbow.hpp"
-#include "../headers/leds_controller.hpp"
+#include "../../headers/leds_controller.hpp"
 
 StairsRainbow::StairsRainbow(LedsController* ledsController, Microphone* microphone, int flags) : AnimationConstructor(ledsController, microphone, flags){  
     refreshMs = std::chrono::milliseconds(40); 

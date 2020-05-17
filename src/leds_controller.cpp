@@ -25,6 +25,10 @@ LedsController::LedsController(WifiManager* wifiManager){
     //create modes
     simpleColorMode = new SimpleColorsMode(this);
     animationMode = new AnimationMode(this);
+    offMode = new PowerOffMode(this);
+
+    //to load initial animation
+    animationMode->init();
 
     //set initial mode
     currentMode = simpleColorMode;
@@ -83,7 +87,7 @@ void LedsController::setMode(int modeLabel){
         case ModeLabel::cinekave:
             currentMode = animationMode;
         case ModeLabel::off:
-            currentMode = animationMode;
+            currentMode = offMode;
         }
 
         currentMode->startMode();

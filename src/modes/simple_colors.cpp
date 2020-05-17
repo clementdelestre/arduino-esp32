@@ -4,7 +4,7 @@
 
 SimpleColorsMode::SimpleColorsMode(LedsController* ledsController) : Mode(ledsController){
      this->ledsController = ledsController;
-     this->modeLabel = simpleColor;
+     this->modeLabel = ModeLabel::simpleColor;
 
 
      isAnimated = false;

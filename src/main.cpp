@@ -21,6 +21,8 @@ WifiManager* wifiManager;
 
 LedsController* ledsController;
 
+char ptrTaskList[250];
+
 void setup() {
   Serial.begin(115200);
   
@@ -62,7 +64,6 @@ void setup() {
 }
 
 void loop() {
-
   //WifiManager
   wifiManager->scanClient();
   

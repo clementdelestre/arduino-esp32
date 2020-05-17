@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "animations_constructor.hpp"
+#include "../../headers/animations_constructor.hpp"
 
 #ifndef STAIRS_FADE_IN_H_INCLUDED
 #define STAIRS_FADE_IN_H_INCLUDED

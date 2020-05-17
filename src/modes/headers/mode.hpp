@@ -17,7 +17,7 @@ class Mode {
     public:
         
         Mode(LedsController* ledsController);
-        void init();
+        virtual void init();
 
         virtual void displayMode();
         
