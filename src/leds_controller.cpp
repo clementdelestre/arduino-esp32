@@ -25,6 +25,7 @@ LedsController::LedsController(WifiManager* wifiManager){
     //create modes
     simpleColorMode = new SimpleColorsMode(this);
     animationMode = new AnimationMode(this);
+    cineKaveMode = new CineKaveMode(this);
     offMode = new PowerOffMode(this);
 
     //to load initial animation
@@ -85,9 +86,11 @@ void LedsController::setMode(int modeLabel){
             currentMode = animationMode;
             break;
         case ModeLabel::cinekave:
-            currentMode = animationMode;
+            currentMode = cineKaveMode;
+            break;
         case ModeLabel::off:
             currentMode = offMode;
+            break;
         }
 
         currentMode->startMode();
@@ -104,6 +107,7 @@ void LedsController::ledsThread(void * parameter){
     
     while(true){     
         ledsController->getCurrentMode()->displayMode();
+        delay(1);
     }
 
 }
@@ -135,5 +139,9 @@ SimpleColorsMode* LedsController::getSimpleColorMode(){
 
 AnimationMode* LedsController::getAnimationMode(){
     return animationMode;
+}
+
+CineKaveMode* LedsController::getCineKaveMode(){
+    return cineKaveMode;
 }
 

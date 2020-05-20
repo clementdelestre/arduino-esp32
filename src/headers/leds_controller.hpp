@@ -7,6 +7,7 @@
 #include "modes/headers/mode.hpp"
 #include "modes/headers/simple_colors.hpp"
 #include "modes/headers/animation.hpp"
+#include "modes/headers/cinekave.hpp"
 #include "modes/headers/power_off.hpp"
 
 //SENSOR
@@ -25,6 +26,7 @@ class LedsController {
 
         SimpleColorsMode* simpleColorMode;
         AnimationMode* animationMode;
+        CineKaveMode* cineKaveMode;
         PowerOffMode* offMode;
 
         bool stairsSensorValue;
@@ -51,6 +53,7 @@ class LedsController {
 
         SimpleColorsMode* getSimpleColorMode();
         AnimationMode* getAnimationMode();
+        CineKaveMode* getCineKaveMode();
 };
 
 

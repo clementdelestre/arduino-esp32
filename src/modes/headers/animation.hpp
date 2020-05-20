@@ -2,24 +2,24 @@
 #include "WiFi.h"
 
 #include "mode.hpp"
-#include "animations/headers/animations_constructor.hpp"
+#include "animations/animations_constructor.hpp"
 #include "../../utils/headers/microphone.hpp"
 
-#include "../../animations/kave/headers/kave_off.hpp"
-#include "../../animations/kave/headers/kave_white_dots.hpp"
-#include "../../animations/kave/headers/kave_six_bars_colored.hpp"
-#include "../../animations/kave/headers/kave_centered_bar.hpp"
-#include "../../animations/kave/headers/kave_change_color.hpp"
-#include "../../animations/kave/headers/kave_strobodots.hpp"
-#include "../../animations/kave/headers/kave_colored_bars.hpp"
-#include "../../animations/kave/headers/kave_gradient_from_edges.hpp"
-#include "../../animations/kave/headers/kave_opacity.hpp"
+#include "../../animations/animationMode/kave/headers/kave_off.hpp"
+#include "../../animations/animationMode/kave/headers/kave_white_dots.hpp"
+#include "../../animations/animationMode/kave/headers/kave_six_bars_colored.hpp"
+#include "../../animations/animationMode/kave/headers/kave_centered_bar.hpp"
+#include "../../animations/animationMode/kave/headers/kave_change_color.hpp"
+#include "../../animations/animationMode/kave/headers/kave_strobodots.hpp"
+#include "../../animations/animationMode/kave/headers/kave_colored_bars.hpp"
+#include "../../animations/animationMode/kave/headers/kave_gradient_from_edges.hpp"
+#include "../../animations/animationMode/kave/headers/kave_opacity.hpp"
 
-#include "../../animations/stairs/headers/stairs_rainbow.hpp"
-#include "../../animations/stairs/headers/stairs_fade_in.hpp"
+#include "../../animations/animationMode/stairs/headers/stairs_rainbow.hpp"
+#include "../../animations/animationMode/stairs/headers/stairs_fade_in.hpp"
 
-#include "../../animations/kave/headers/kave_stroboscope.hpp"
-#include "../../animations/stairs/headers/stairs_stroboscope.hpp"
+#include "../../animations/animationMode/kave/headers/kave_stroboscope.hpp"
+#include "../../animations/animationMode/stairs/headers/stairs_stroboscope.hpp"
 
 #ifndef ANIMATION_MODE_H_INCLUDED
 #define ANIMATION_MODE_H_INCLUDED

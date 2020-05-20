@@ -30,6 +30,15 @@ enum Flags : int {
     A_GET_ENABLED_ANIMATIONS = 31,
     A_SET_ENABLE_ANIMATION = 32,
 
+    //CineKave
+    CK_IS_CONNECTED = 40,
+    CK_MODE = 41,
+    CK_SCREEN_COLOR = 42,
+    CK_LUMINOSITY = 43,
+
+    //Other
+    CHECK_CONNECTION = 100,
+
 };
 
 class LedsController;

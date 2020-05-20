@@ -59,9 +59,6 @@ void AnimationMode::displayMode(){
           ledsController->getStairsLeds()->ClearTo(0);
           ledsController->getStairsLeds()->Show();
      }
-     
-
-     delay(1);
 }
 
 void AnimationMode::startMode(){

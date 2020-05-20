@@ -1,6 +1,12 @@
-#include "animations/headers/animations_constructor.hpp"
+#include "animations/animations_constructor.hpp"
 
 #include "../headers/leds_controller.hpp"
+
+AnimationConstructor::AnimationConstructor(LedsController* ledsController){
+    this->ledsController = ledsController;
+    pauseDelay =  Utils::getTimeSinceEpoch();
+    refreshMs = std::chrono::milliseconds(40);
+}
 
 AnimationConstructor::AnimationConstructor(LedsController* ledsController, Microphone* microphone, int flag){
     this->ledsController = ledsController;

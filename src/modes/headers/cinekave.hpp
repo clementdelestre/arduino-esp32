@@ -1,0 +1,51 @@
+#include <Arduino.h>
+#include "mode.hpp"
+
+#include "../../animations/cineKaveMode/headers/waiting.hpp"
+#include "../../animations/cineKaveMode/headers/playing.hpp"
+#include "../../animations/cineKaveMode/headers/paused.hpp"
+
+#ifndef CINEKAVE_MODE_H_INCLUDED
+#define CINEKAVE_MODE_H_INCLUDED
+
+enum CinePlayMode {
+    WAITING = 0,
+    PLAYING = 1,
+    PAUSED = 2
+};
+
+class LedsController;
+
+class CineKaveMode : public Mode {
+
+    private:
+        bool resetStairsSensorValue;
+
+        bool isConnected;
+        RgbColor screenColor;
+        int luminosity;
+        AnimationConstructor* currentAnimation;
+
+        std::chrono::milliseconds lastConnectionReceive;
+        const int connectionTimeOut = 1000;
+
+    public:
+        CineKaveMode(LedsController* ledsController);
+        void displayMode() override; 
+        void startMode() override;
+        void stopMode() override;
+        void sendModeData() override;
+
+        bool getConnectionState();
+
+        int getPlayMode();
+        void setPlayMode(int playMode);
+
+        void setScreenColor(RgbColor screenColor);
+        RgbColor getScreenColor();
+
+        void setLuminosity(int luminosity);
+        int getLuminosity();
+};
+
+#endif

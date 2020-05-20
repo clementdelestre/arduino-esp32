@@ -105,6 +105,21 @@ void WifiManager::scanClient(){
             case Flags::A_STOP_AUTO_STROBOSCOPE:
               ledsController->getAnimationMode()->setStroboscopeAutoStop(buf[1] == 1);
               break;
+            
+            //CINEKAVE
+            case Flags::CK_MODE:
+              ledsController->getCineKaveMode()->setPlayMode(buf[1]);
+              break;
+            case Flags::CK_SCREEN_COLOR:
+              ledsController->getCineKaveMode()->setScreenColor(RgbColor(buf[1], buf[2], buf[3]));
+              break;
+            case Flags::CK_LUMINOSITY:
+              ledsController->getCineKaveMode()->setLuminosity(buf[1]);
+              break;
+            
+            //OTHERS
+            case Flags::CHECK_CONNECTION:
+              break;
 
             default:
               Serial.println("socket: wrong data!");
