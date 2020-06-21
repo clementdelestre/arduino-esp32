@@ -111,7 +111,7 @@ void Microphone::start(){
         "LED_KAVE_MICROPHONE", /* Name of the task */
         10000,  /* Stack size in words */
         this,  /* Task input parameter */
-        10,  /* Priority of the task */
+        1,  /* Priority of the task */
         &microphoneTask,  /* Task handle. */
         1); /* Core where the task should run */
 }

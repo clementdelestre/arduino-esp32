@@ -233,6 +233,28 @@ void AnimationMode::sendEnabledAnimations(WiFiClient* client){
      ledsController->getWifiManager()->sendAllClientData(Flags::A_KAVE_CURRENT_ANIM, currentKaveAnimation->getFlag(), 0, 0);
 }
 
+void AnimationMode::setCategory(int category){
+     switch (category)
+     {
+     case 0:
+          listKaveActivatedAnimation = listAllKaveAnimation;
+          break;
+     case 1:
+          listKaveActivatedAnimation = {};
+          break;
+     case 2:
+          listKaveActivatedAnimation = categoryAnimationSoft;
+          break;
+     case 3:
+          listKaveActivatedAnimation = categoryAnimationHard;
+          break;
+     case 4:
+          listKaveActivatedAnimation = categoryAnimationVeryHard;
+          break;    
+     }
+     nextKaveAnimation();
+}
+
 void AnimationMode::setStroboscopeSpeed(int speed){
      stroboscopeSpeed = speed;
 }

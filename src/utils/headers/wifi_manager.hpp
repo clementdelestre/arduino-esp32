@@ -29,6 +29,7 @@ enum Flags : int {
     A_MAIN_COLOR = 30,
     A_GET_ENABLED_ANIMATIONS = 31,
     A_SET_ENABLE_ANIMATION = 32,
+    A_SET_CATEGORY_ANIMATION = 33,
 
     //CineKave
     CK_IS_CONNECTED = 40,

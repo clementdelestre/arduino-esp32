@@ -74,6 +74,26 @@ class AnimationMode : public Mode {
             KAVE_OPACITY,
         };
 
+        const  std::vector<int> categoryAnimationSoft = {
+            SIX_BARS_COLORED,
+            KAVE_CENTERED_BAR,
+            KAVE_CHANGE_COLOR,
+            KAVE_GRADIENT_FROM_EDGES,
+        };
+
+        const  std::vector<int> categoryAnimationHard = {
+            WHITE_DOTS,
+            KAVE_CHANGE_COLOR,
+            KAVE_STROBODOTS,
+            KAVE_COLORED_BARS,
+            KAVE_OPACITY,
+        };
+
+        const  std::vector<int> categoryAnimationVeryHard = {
+            WHITE_DOTS,
+            KAVE_STROBODOTS,
+        };
+
         std::vector<int> listKaveActivatedAnimation;
 
 
@@ -105,6 +125,8 @@ class AnimationMode : public Mode {
 
         int selectRandomKaveAnimation();
         int selectRandomStairsAnimation();
+
+        void setCategory(int category);
 
         //Change animation for Kave AND Stairs
         void setKaveAnimation(int kaveAnimation);

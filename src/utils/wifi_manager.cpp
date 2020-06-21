@@ -93,6 +93,9 @@ void WifiManager::scanClient(){
             case Flags::A_GET_ENABLED_ANIMATIONS:
               ledsController->getAnimationMode()->sendEnabledAnimations(&serverClients[i]);
               break;
+            case Flags::A_SET_CATEGORY_ANIMATION:
+              ledsController->getAnimationMode()->setCategory(buf[1]);
+              break;
             case Flags::A_SELECT_ANIMATION:
               ledsController->getAnimationMode()->setKaveAnimation(buf[1]);
               break;
