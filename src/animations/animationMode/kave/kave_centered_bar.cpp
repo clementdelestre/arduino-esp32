@@ -13,7 +13,7 @@ KaveCenteredBar::KaveCenteredBar(LedsController* ledsController, Microphone* mic
 
 void KaveCenteredBar::animationContent(){    
   
-    int activeLedTarget = ledsController->getKaveLeds()->PixelCount()*microphone->getLowFrequency()/2;
+    int activeLedTarget = ledsController->getKaveLeds()->PixelCount()*microphone->getMediumFrequency()/2;
 
     if(activeLedTarget == 0) activeLedTarget = 1;
 

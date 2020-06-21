@@ -14,6 +14,9 @@
 #include "../../animations/animationMode/kave/headers/kave_colored_bars.hpp"
 #include "../../animations/animationMode/kave/headers/kave_gradient_from_edges.hpp"
 #include "../../animations/animationMode/kave/headers/kave_opacity.hpp"
+#include "../../animations/animationMode/kave/headers/kave_slide.hpp"
+#include "../../animations/animationMode/kave/headers/kave_scroll.hpp"
+#include "../../animations/animationMode/kave/headers/kave_colored_bars_with_edges.hpp"
 
 #include "../../animations/animationMode/stairs/headers/stairs_rainbow.hpp"
 #include "../../animations/animationMode/stairs/headers/stairs_fade_in.hpp"
@@ -31,12 +34,15 @@ enum AnimationKaveLabel {
     KAVE_CHANGE_COLOR = 1,   
     KAVE_STROBOSCOPE = 2,
     KAVE_CENTERED_BAR = 3,
-    WHITE_DOTS = 4,
+    KAVE_WHITE_DOTS = 4,
     KAVE_STROBODOTS = 5,
     KAVE_COLORED_BARS = 6,
     KAVE_GRADIENT_FROM_EDGES = 7,
     KAVE_OPACITY = 8,
-    SIX_BARS_COLORED = 9,
+    KAVE_SIX_BARS_COLORED = 9,
+    KAVE_SLIDE = 10,
+    KAVE_SCROLL = 11,
+    KAVE_COLORED_BARS_WITH_EDGES = 12,
 };
 
 enum AnimationStairsLabel {
@@ -63,8 +69,8 @@ class AnimationMode : public Mode {
 
         const  std::vector<int> listAllKaveAnimation = {
             KAVE_OFF,
-            WHITE_DOTS,
-            SIX_BARS_COLORED,
+            KAVE_WHITE_DOTS,
+            KAVE_SIX_BARS_COLORED,
             KAVE_STROBOSCOPE,
             KAVE_CENTERED_BAR,
             KAVE_CHANGE_COLOR,
@@ -72,26 +78,34 @@ class AnimationMode : public Mode {
             KAVE_COLORED_BARS,
             KAVE_GRADIENT_FROM_EDGES,
             KAVE_OPACITY,
+            KAVE_SLIDE,
+            KAVE_SCROLL,
+            KAVE_COLORED_BARS_WITH_EDGES,
         };
 
         const  std::vector<int> categoryAnimationSoft = {
-            SIX_BARS_COLORED,
+            KAVE_SIX_BARS_COLORED,
             KAVE_CENTERED_BAR,
             KAVE_CHANGE_COLOR,
             KAVE_GRADIENT_FROM_EDGES,
+            KAVE_SLIDE,
         };
 
         const  std::vector<int> categoryAnimationHard = {
-            WHITE_DOTS,
+            KAVE_WHITE_DOTS,
             KAVE_CHANGE_COLOR,
             KAVE_STROBODOTS,
             KAVE_COLORED_BARS,
             KAVE_OPACITY,
+            KAVE_SCROLL,
+            KAVE_COLORED_BARS_WITH_EDGES
         };
 
         const  std::vector<int> categoryAnimationVeryHard = {
-            WHITE_DOTS,
+            KAVE_WHITE_DOTS,
             KAVE_STROBODOTS,
+            KAVE_COLORED_BARS,
+            KAVE_SCROLL,
         };
 
         std::vector<int> listKaveActivatedAnimation;

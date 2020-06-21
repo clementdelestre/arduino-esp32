@@ -117,11 +117,11 @@ void AnimationMode::setKaveAnimation(int kaveAnimation){
      case AnimationKaveLabel::KAVE_OFF:
           currentKaveAnimation = new KaveOff(ledsController, microphone, kaveAnimation);
           break;
-     case AnimationKaveLabel::WHITE_DOTS:
+     case AnimationKaveLabel::KAVE_WHITE_DOTS:
           currentKaveAnimation = new WhiteDots(ledsController, microphone, kaveAnimation);
           break;
 
-     case AnimationKaveLabel::SIX_BARS_COLORED:
+     case AnimationKaveLabel::KAVE_SIX_BARS_COLORED:
           currentKaveAnimation = new SixBarsColored(ledsController, microphone, kaveAnimation);
           break;
      case AnimationKaveLabel::KAVE_STROBOSCOPE:
@@ -144,6 +144,15 @@ void AnimationMode::setKaveAnimation(int kaveAnimation){
           break;
      case AnimationKaveLabel::KAVE_OPACITY:
           currentKaveAnimation = new KaveOpacity(ledsController, microphone, kaveAnimation);
+          break;
+     case AnimationKaveLabel::KAVE_SLIDE:
+          currentKaveAnimation = new KaveSlide(ledsController, microphone, kaveAnimation);
+          break;
+     case AnimationKaveLabel::KAVE_SCROLL:
+          currentKaveAnimation = new KaveScroll(ledsController, microphone, kaveAnimation);
+          break;
+     case AnimationKaveLabel::KAVE_COLORED_BARS_WITH_EDGES:
+          currentKaveAnimation = new KaveColoredBarsWithEdges(ledsController, microphone, kaveAnimation);
           break;
      }
 
