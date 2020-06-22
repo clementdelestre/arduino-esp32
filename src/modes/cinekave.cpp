@@ -7,9 +7,10 @@ CineKaveMode::CineKaveMode(LedsController* ledsController) : Mode(ledsController
      this->modeLabel = ModeLabel::cinekave;
 
      //set mode initial values
-     screenColor = RgbColor(0,0,0);
-     luminosity = 50;
+     screenColor = RgbColor(150,0,150);
+     luminosity = 30;
      
+     currentAnimation = new WaitingCineKaveAnim(ledsController);  
 }
 
 void CineKaveMode::startMode(){
@@ -17,8 +18,7 @@ void CineKaveMode::startMode(){
      //save the sensor state
      this->resetStairsSensorValue = ledsController->getUseStairsSensor();
      ledsController->setUseStairsSensor(true);
-     lastConnectionReceive = Utils::getTimeSinceEpoch()-std::chrono::milliseconds(connectionTimeOut);
-     currentAnimation = new WaitingCineKaveAnim(ledsController);
+     lastConnectionReceive = Utils::getTimeSinceEpoch()-std::chrono::seconds(connectionTimeOut);    
 }
 
 void CineKaveMode::stopMode(){
@@ -34,10 +34,11 @@ void CineKaveMode::sendModeData(){
      ledsController->getWifiManager()->sendAllClientData(Flags::CK_IS_CONNECTED, isConnected ? 1 : 0, 0, 0);
      ledsController->getWifiManager()->sendAllClientData(Flags::CK_MODE, currentAnimation->getFlag(), 0, 0);
      ledsController->getWifiManager()->sendAllClientData(Flags::CK_LUMINOSITY, luminosity, 0, 0);
+     ledsController->getWifiManager()->sendAllClientData(Flags::CK_IS_CONNECTED, getConnectionState() ? 1 : 0, 0, 0);
 }
 
 bool CineKaveMode::getConnectionState(){
-     return lastConnectionReceive+std::chrono::milliseconds(connectionTimeOut)>Utils::getTimeSinceEpoch();
+     return lastConnectionReceive+std::chrono::seconds(connectionTimeOut)>Utils::getTimeSinceEpoch();
 }
 
 int CineKaveMode::getPlayMode(){

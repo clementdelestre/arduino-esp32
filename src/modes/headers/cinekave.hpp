@@ -27,7 +27,7 @@ class CineKaveMode : public Mode {
         AnimationConstructor* currentAnimation;
 
         std::chrono::milliseconds lastConnectionReceive;
-        const int connectionTimeOut = 1000;
+        const int connectionTimeOut = 5;
 
     public:
         CineKaveMode(LedsController* ledsController);
