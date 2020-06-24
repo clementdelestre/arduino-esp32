@@ -5,6 +5,7 @@
 #include "../utils/headers/utils.hpp"
 
 #include "modes/headers/mode.hpp"
+#include "modes/headers/wifi_loader.hpp"
 #include "modes/headers/simple_colors.hpp"
 #include "modes/headers/animation.hpp"
 #include "modes/headers/cinekave.hpp"
@@ -24,6 +25,7 @@ class LedsController {
         Mode* currentMode;
         ModeLabel modeLabel;
 
+        WifiLoaderMode* wifiLoaderMode;
         SimpleColorsMode* simpleColorMode;
         AnimationMode* animationMode;
         CineKaveMode* cineKaveMode;
@@ -51,6 +53,7 @@ class LedsController {
 
         bool canShowStairs();
 
+        WifiLoaderMode* getWifiLoaderMode();
         SimpleColorsMode* getSimpleColorMode();
         AnimationMode* getAnimationMode();
         CineKaveMode* getCineKaveMode();

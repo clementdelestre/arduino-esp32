@@ -23,6 +23,7 @@ LedsController::LedsController(WifiManager* wifiManager){
 
 
     //create modes
+    wifiLoaderMode = new WifiLoaderMode(this);
     simpleColorMode = new SimpleColorsMode(this);
     animationMode = new AnimationMode(this);
     cineKaveMode = new CineKaveMode(this);
@@ -32,7 +33,7 @@ LedsController::LedsController(WifiManager* wifiManager){
     animationMode->init();
 
     //set initial mode
-    currentMode = simpleColorMode;
+    currentMode = wifiLoaderMode;
 
     stairsSensorValue = false;
     useStairsSensor = false;
@@ -43,6 +44,9 @@ void LedsController::init(){
 
     kaveStrip.Begin();
     stairsStrip.Begin();
+
+    //start mode
+    currentMode->startMode();
 
     xTaskCreatePinnedToCore(
         ledsThread, /* Function to implement the task */
@@ -68,8 +72,6 @@ WifiManager* LedsController::getWifiManager(){
 }
 
 void LedsController::setMode(int modeLabel){
-
-
     
     if(modeLabel != currentMode->getModeLabel()){
         Serial.println("change mode");
@@ -131,6 +133,10 @@ bool LedsController::canShowStairs(){
 
 Mode* LedsController::getCurrentMode(){
     return currentMode;
+}
+
+WifiLoaderMode* LedsController::getWifiLoaderMode(){
+    return wifiLoaderMode;
 }
 
 SimpleColorsMode* LedsController::getSimpleColorMode(){

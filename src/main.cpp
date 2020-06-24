@@ -34,7 +34,7 @@ void setup() {
   //START WIFI
   wifiMulti.addAP(ssid, password);
 
-  
+  ledsController->init();
 
   Serial.println("Connecting Wifi ");
   for (int loops = 10; loops > 0; loops--) {
@@ -52,6 +52,7 @@ void setup() {
   }
   if (wifiMulti.run() != WL_CONNECTED) {
     Serial.println("WiFi connect failed");
+    ledsController->getWifiLoaderMode()->needRestart();
     delay(1000);
     ESP.restart();
   }
@@ -60,7 +61,8 @@ void setup() {
   wifiServer.begin();
   wifiServer.setNoDelay(true);
 
-  ledsController->init();
+  ledsController->setMode(ModeLabel::simpleColor);
+
 }
 
 void loop() {
