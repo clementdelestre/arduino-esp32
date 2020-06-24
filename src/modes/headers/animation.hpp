@@ -17,6 +17,10 @@
 #include "../../animations/animationMode/kave/headers/kave_slide.hpp"
 #include "../../animations/animationMode/kave/headers/kave_scroll.hpp"
 #include "../../animations/animationMode/kave/headers/kave_colored_bars_with_edges.hpp"
+#include "../../animations/animationMode/kave/headers/kave_fire.hpp"
+#include "../../animations/animationMode/kave/headers/kave_side_bars.hpp"
+#include "../../animations/animationMode/kave/headers/kave_three_bars.hpp"
+#include "../../animations/animationMode/kave/headers/kave_moving_bars.hpp"
 
 #include "../../animations/animationMode/stairs/headers/stairs_rainbow.hpp"
 #include "../../animations/animationMode/stairs/headers/stairs_fade_in.hpp"
@@ -43,6 +47,10 @@ enum AnimationKaveLabel {
     KAVE_SLIDE = 10,
     KAVE_SCROLL = 11,
     KAVE_COLORED_BARS_WITH_EDGES = 12,
+    KAVE_FIRE = 13,
+    KAVE_SIDE_BARS = 14,
+    KAVE_THREE_BARS = 15,
+    KAVE_MOVING_BARS = 16,
 };
 
 enum AnimationStairsLabel {
@@ -81,6 +89,10 @@ class AnimationMode : public Mode {
             KAVE_SLIDE,
             KAVE_SCROLL,
             KAVE_COLORED_BARS_WITH_EDGES,
+            KAVE_FIRE,
+            KAVE_SIDE_BARS,
+            KAVE_THREE_BARS,
+            KAVE_MOVING_BARS,
         };
 
         const  std::vector<int> categoryAnimationSoft = {
@@ -89,6 +101,9 @@ class AnimationMode : public Mode {
             KAVE_CHANGE_COLOR,
             KAVE_GRADIENT_FROM_EDGES,
             KAVE_SLIDE,
+            KAVE_FIRE,
+            KAVE_SIDE_BARS,
+            KAVE_MOVING_BARS
         };
 
         const  std::vector<int> categoryAnimationHard = {
@@ -98,7 +113,10 @@ class AnimationMode : public Mode {
             KAVE_COLORED_BARS,
             KAVE_OPACITY,
             KAVE_SCROLL,
-            KAVE_COLORED_BARS_WITH_EDGES
+            KAVE_COLORED_BARS_WITH_EDGES,
+            KAVE_FIRE,
+            KAVE_SIDE_BARS,  
+            KAVE_THREE_BARS,         
         };
 
         const  std::vector<int> categoryAnimationVeryHard = {

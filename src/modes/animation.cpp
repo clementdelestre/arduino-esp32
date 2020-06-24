@@ -154,6 +154,18 @@ void AnimationMode::setKaveAnimation(int kaveAnimation){
      case AnimationKaveLabel::KAVE_COLORED_BARS_WITH_EDGES:
           currentKaveAnimation = new KaveColoredBarsWithEdges(ledsController, microphone, kaveAnimation);
           break;
+     case AnimationKaveLabel::KAVE_FIRE:
+          currentKaveAnimation = new KaveFire(ledsController, microphone, kaveAnimation);
+          break;
+     case AnimationKaveLabel::KAVE_SIDE_BARS:
+          currentKaveAnimation = new KaveSideBars(ledsController, microphone, kaveAnimation);
+          break;
+     case AnimationKaveLabel::KAVE_THREE_BARS:
+          currentKaveAnimation = new KaveThreeBars(ledsController, microphone, kaveAnimation);
+          break;
+     case AnimationKaveLabel::KAVE_MOVING_BARS:
+          currentKaveAnimation = new KaveMovingBars(ledsController, microphone, kaveAnimation);
+          break;
      }
 
      //useful for stroboscope

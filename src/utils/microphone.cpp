@@ -42,13 +42,13 @@ void Microphone::startThread(){
         for (int i = 2; i < 60; i++){ 
             int val = vReal[i];
 
-            if(i<=8 && val > 800){
+            if(i<=8 && val > 700){
                 low_frequency+=val;
-            } else if(i>8 && val > 500 && i < 60) {
+            } else if(i>8 && val > 300) {
                 high_frequency+=val;
             }
 
-            if(val > 500 && i < 60){
+            if(val > 500){
                 medium_frequency+=val;
             }
  
@@ -63,7 +63,7 @@ void Microphone::startThread(){
             }
 
             calibration = true;
-
+            //todo
             if(low_frequency>max_low_frequency) max_low_frequency = low_frequency;
             if(high_frequency>max_high_frequency) max_high_frequency = high_frequency;
             if(medium_frequency>max_medium_frequency) max_medium_frequency = medium_frequency;
@@ -74,11 +74,12 @@ void Microphone::startThread(){
                 calibration = false;
             }
         }
-
+        //todo
         percent_low_frequency = (low_frequency/max_low_frequency > 1) ? 1 : low_frequency/max_low_frequency;
         percent_high_frequency = (high_frequency/max_high_frequency > 1) ? 1 : high_frequency/max_high_frequency;
         percent_medium_frequency = (medium_frequency/max_medium_frequency > 1) ? 1 : medium_frequency/max_medium_frequency;
 
+        //Serial.println(percent_low_frequency);
         delay(5);
     }
 

@@ -6,8 +6,8 @@
 #ifndef MICROPHONE_INCLUDED
 #define MICROPHONE_INCLUDED
 
-#define SAMPLES 1024             // Must be a power of 2
-#define SAMPLING_FREQUENCY 40000 // Hz, must be 40000 or less due to ADC conversion time. Determines maximum frequency that can be analysed by the FFT Fmax=sampleF/2.
+#define SAMPLES 256           // Must be a power of 2 default: 1024
+#define SAMPLING_FREQUENCY 40000 // default: 40000 Hz, must be 40000 or less due to ADC conversion time. Determines maximum frequency that can be analysed by the FFT Fmax=sampleF/2.
 #define amplitude 150   
 
 #define MICROPHONE 34
