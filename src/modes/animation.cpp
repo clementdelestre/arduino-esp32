@@ -193,16 +193,19 @@ void AnimationMode::nextKaveAnimation(){
 
 void AnimationMode::setKeepAnimation(bool keep){
      keepAnimation = keep;
+     ledsController->getWifiManager()->sendAllClientData(Flags::A_KEEP_ANIMATION, keepAnimation ? 1 : 0, 0, 0);
 }
 
 void AnimationMode::setStairsRandomAnim(bool random){
      stairsRandomAnim = random;
+     ledsController->getWifiManager()->sendAllClientData(Flags::A_STAIRS_RANDOM_ANIM, stairsRandomAnim ? 1 : 0, 0, 0);
 }
 
 void AnimationMode::setMainAutoColor(bool autoColor){
      mainAutoColor = autoColor;
      currentKaveAnimation->init();
      currentStairsAnimation->init();
+     ledsController->getWifiManager()->sendAllClientData(Flags::A_MAIN_COLOR_AUT0, mainAutoColor ? 1 : 0, 0, 0);
 }
 
 bool AnimationMode::getMainAutoColor(){
@@ -213,6 +216,7 @@ void AnimationMode::setMainColor(RgbColor color){
      mainColor = color;
      currentKaveAnimation->init();
      currentStairsAnimation->init();
+     ledsController->getWifiManager()->sendAllClientData(Flags::A_MAIN_COLOR, color.R, color.G, color.B);
 }
 
 RgbColor AnimationMode::getMainColor(){
@@ -274,6 +278,7 @@ int AnimationMode::getStroboscopeSpeed(){
 
 void AnimationMode::setStroboscopeAutoStop(bool autoStop){
      stroboscopeAutoStop = autoStop;
+     ledsController->getWifiManager()->sendAllClientData(Flags::A_STOP_AUTO_STROBOSCOPE, stroboscopeAutoStop ? 1 : 0, 0, 0);
 }
 
 void AnimationMode::startStroboscope(){   

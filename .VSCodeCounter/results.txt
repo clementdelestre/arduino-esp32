@@ -1,99 +1,96 @@
-Date : 2020-05-20 22:56:28
-Directory : /home/clement/Documents/Projets/Arduino/KaveEspv4
-Total : 57 files,  1760 codes, 126 comments, 719 blanks, all 2605 lines
+Date : 2020-06-22 18:42:11
+Directory : /home/clement/Documents/Projets/Arduino/KaveEspv4/src
+Total : 59 files,  1922 codes, 59 comments, 760 blanks, all 2741 lines
 
 Languages
 +----------+------------+------------+------------+------------+------------+
 | language | files      | code       | comment    | blank      | total      |
 +----------+------------+------------+------------+------------+------------+
-| C++      |         53 |      1,716 |         56 |        692 |      2,464 |
-| Markdown |          1 |         31 |          0 |         18 |         49 |
-| Ini      |          1 |          7 |          9 |          1 |         17 |
-| Log      |          1 |          6 |          0 |          1 |          7 |
-| YAML     |          1 |          0 |         61 |          7 |         68 |
+| C++      |         59 |      1,922 |         59 |        760 |      2,741 |
 +----------+------------+------------+------------+------------+------------+
 
 Directories
-+--------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
-| path                                                                                                                     | files      | code       | comment    | blank      | total      |
-+--------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
-| .                                                                                                                        |         57 |      1,760 |        126 |        719 |      2,605 |
-| src                                                                                                                      |         53 |      1,716 |         56 |        692 |      2,464 |
-| src/animations                                                                                                           |         34 |        610 |          3 |        306 |        919 |
-| src/animations/animationMode                                                                                             |         26 |        450 |          3 |        226 |        679 |
-| src/animations/animationMode/kave                                                                                        |         20 |        339 |          3 |        182 |        524 |
-| src/animations/animationMode/kave/headers                                                                                |         10 |        138 |          1 |         78 |        217 |
-| src/animations/animationMode/stairs                                                                                      |          6 |        111 |          0 |         44 |        155 |
-| src/animations/animationMode/stairs/headers                                                                              |          3 |         44 |          0 |         24 |         68 |
-| src/animations/cineKaveMode                                                                                              |          6 |         99 |          0 |         53 |        152 |
-| src/animations/cineKaveMode/headers                                                                                      |          3 |         41 |          0 |         23 |         64 |
-| src/headers                                                                                                              |          1 |         41 |          1 |         19 |         61 |
-| src/modes                                                                                                                |         10 |        568 |         19 |        210 |        797 |
-| src/modes/headers                                                                                                        |          5 |        191 |          8 |         85 |        284 |
-| src/utils                                                                                                                |          6 |        359 |         15 |         95 |        469 |
-| src/utils/headers                                                                                                        |          3 |         99 |          4 |         40 |        143 |
-+--------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                         | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                            |         59 |      1,922 |         59 |        760 |      2,741 |
+| animations                                                                                                                   |         40 |        744 |          5 |        368 |      1,117 |
+| animations/animationMode                                                                                                     |         32 |        584 |          5 |        293 |        882 |
+| animations/animationMode/kave                                                                                                |         26 |        473 |          5 |        249 |        727 |
+| animations/animationMode/kave/headers                                                                                        |         13 |        182 |          1 |        104 |        287 |
+| animations/animationMode/stairs                                                                                              |          6 |        111 |          0 |         44 |        155 |
+| animations/animationMode/stairs/headers                                                                                      |          3 |         44 |          0 |         24 |         68 |
+| animations/cineKaveMode                                                                                                      |          6 |         99 |          0 |         48 |        147 |
+| animations/cineKaveMode/headers                                                                                              |          3 |         41 |          0 |         23 |         64 |
+| headers                                                                                                                      |          1 |         41 |          1 |         19 |         61 |
+| modes                                                                                                                        |         10 |        636 |         20 |        216 |        872 |
+| modes/headers                                                                                                                |          5 |        223 |          8 |         89 |        320 |
+| utils                                                                                                                        |          6 |        363 |         15 |         95 |        473 |
+| utils/headers                                                                                                                |          3 |        100 |          4 |         40 |        144 |
++------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
 
 Files
-+--------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
-| filename                                                                                                                 | language | code       | comment    | blank      | total      |
-+--------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/.travis.yml                                                            | YAML     |          0 |         61 |          7 |         68 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/platformio-device-monitor-200512-145436.log                            | Log      |          6 |          0 |          1 |          7 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/platformio.ini                                                         | Ini      |          7 |          9 |          1 |         17 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/readme.md                                                              | Markdown |         31 |          0 |         18 |         49 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_centered_bar.hpp        | C++      |         16 |          0 |          8 |         24 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_change_color.hpp        | C++      |         13 |          0 |          8 |         21 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_colored_bars.hpp        | C++      |         16 |          1 |          9 |         26 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_gradient_from_edges.hpp | C++      |         15 |          0 |          8 |         23 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_off.hpp                 | C++      |         11 |          0 |          7 |         18 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_opacity.hpp             | C++      |         15 |          0 |          7 |         22 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_six_bars_colored.hpp    | C++      |         14 |          0 |          8 |         22 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_strobodots.hpp          | C++      |         13 |          0 |          8 |         21 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_stroboscope.hpp         | C++      |         11 |          0 |          7 |         18 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_white_dots.hpp          | C++      |         14 |          0 |          8 |         22 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_centered_bar.cpp                | C++      |         40 |          0 |         16 |         56 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_change_color.cpp                | C++      |         15 |          0 |          7 |         22 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_colored_bars.cpp                | C++      |         26 |          2 |         16 |         44 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_gradient_from_edges.cpp         | C++      |         24 |          0 |          9 |         33 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_off.cpp                         | C++      |          9 |          0 |          5 |         14 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_opacity.cpp                     | C++      |         21 |          0 |         10 |         31 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_six_bars_colored.cpp            | C++      |         18 |          0 |          8 |         26 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_stroboscope.cpp                 | C++      |         14 |          0 |          9 |         23 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_strobosots.cpp                  | C++      |         17 |          0 |         11 |         28 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_white_dots.cpp                  | C++      |         17 |          0 |         13 |         30 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/stairs/headers/stairs_fade_in.hpp         | C++      |         15 |          0 |          8 |         23 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/stairs/headers/stairs_rainbow.hpp         | C++      |         14 |          0 |          8 |         22 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/stairs/headers/stairs_stroboscope.hpp     | C++      |         15 |          0 |          8 |         23 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/stairs/stairs_fade_in.cpp                 | C++      |         21 |          0 |          6 |         27 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/stairs/stairs_rainbow.cpp                 | C++      |         29 |          0 |          8 |         37 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/stairs/stairs_stroboscope.cpp             | C++      |         17 |          0 |          6 |         23 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animations_constructor.cpp                              | C++      |         35 |          0 |         14 |         49 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animations_constructor.hpp                              | C++      |         26 |          0 |         13 |         39 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/headers/paused.hpp                         | C++      |         15 |          0 |          8 |         23 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/headers/playing.hpp                        | C++      |         11 |          0 |          7 |         18 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/headers/waiting.hpp                        | C++      |         15 |          0 |          8 |         23 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/paused.cpp                                 | C++      |         24 |          0 |         11 |         35 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/playing.cpp                                | C++      |         10 |          0 |          8 |         18 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/waiting.cpp                                | C++      |         24 |          0 |         11 |         35 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/headers/leds_controller.hpp                                        | C++      |         41 |          1 |         19 |         61 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/leds_controller.cpp                                                | C++      |         92 |         12 |         44 |        148 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/main.cpp                                                           | C++      |         46 |          6 |         18 |         70 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/animation.cpp                                                | C++      |        199 |          5 |         55 |        259 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/cinekave.cpp                                                 | C++      |         60 |          4 |         20 |         84 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/animation.hpp                                        | C++      |         95 |          6 |         37 |        138 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/cinekave.hpp                                         | C++      |         37 |          0 |         14 |         51 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/mode.hpp                                             | C++      |         20 |          0 |         13 |         33 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/power_off.hpp                                        | C++      |         12 |          0 |          7 |         19 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/simple_colors.hpp                                    | C++      |         27 |          2 |         14 |         43 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/mode.cpp                                                     | C++      |         20 |          0 |         14 |         34 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/power_off.cpp                                                | C++      |         15 |          0 |          7 |         22 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/simple_colors.cpp                                            | C++      |         83 |          2 |         29 |        114 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils/headers/microphone.hpp                                       | C++      |         38 |          0 |         21 |         59 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils/headers/utils.hpp                                            | C++      |         14 |          0 |          6 |         20 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils/headers/wifi_manager.hpp                                     | C++      |         47 |          4 |         13 |         64 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils/microphone.cpp                                               | C++      |         89 |          3 |         31 |        123 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils/utils.cpp                                                    | C++      |         23 |          0 |          8 |         31 |
-| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils/wifi_manager.cpp                                             | C++      |        148 |          8 |         16 |        172 |
-| Total                                                                                                                    |          |      1,760 |        126 |        719 |      2,605 |
-+--------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
++------------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                                     | language | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_centered_bar.hpp            | C++      |         16 |          0 |          8 |         24 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_change_color.hpp            | C++      |         13 |          0 |          8 |         21 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_colored_bars.hpp            | C++      |         16 |          1 |          9 |         26 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_colored_bars_with_edges.hpp | C++      |         18 |          0 |         10 |         28 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_gradient_from_edges.hpp     | C++      |         15 |          0 |          8 |         23 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_off.hpp                     | C++      |         11 |          0 |          7 |         18 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_opacity.hpp                 | C++      |         15 |          0 |          7 |         22 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_scroll.hpp                  | C++      |         13 |          0 |          8 |         21 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_six_bars_colored.hpp        | C++      |         14 |          0 |          8 |         22 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_slide.hpp                   | C++      |         13 |          0 |          8 |         21 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_strobodots.hpp              | C++      |         13 |          0 |          8 |         21 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_stroboscope.hpp             | C++      |         11 |          0 |          7 |         18 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/headers/kave_white_dots.hpp              | C++      |         14 |          0 |          8 |         22 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_centered_bar.cpp                    | C++      |         40 |          0 |         16 |         56 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_change_color.cpp                    | C++      |         15 |          0 |          7 |         22 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_colored_bars.cpp                    | C++      |         26 |          2 |         16 |         44 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_colored_bars_with_edges.cpp         | C++      |         34 |          2 |         18 |         54 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_gradient_from_edges.cpp             | C++      |         24 |          0 |          9 |         33 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_off.cpp                             | C++      |          9 |          0 |          5 |         14 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_opacity.cpp                         | C++      |         21 |          0 |         10 |         31 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_scroll.cpp                          | C++      |         25 |          0 |          9 |         34 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_six_bars_colored.cpp                | C++      |         18 |          0 |          8 |         26 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_slide.cpp                           | C++      |         31 |          0 |         14 |         45 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_stroboscope.cpp                     | C++      |         14 |          0 |          9 |         23 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_strobosots.cpp                      | C++      |         17 |          0 |         11 |         28 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/kave/kave_white_dots.cpp                      | C++      |         17 |          0 |         13 |         30 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/stairs/headers/stairs_fade_in.hpp             | C++      |         15 |          0 |          8 |         23 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/stairs/headers/stairs_rainbow.hpp             | C++      |         14 |          0 |          8 |         22 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/stairs/headers/stairs_stroboscope.hpp         | C++      |         15 |          0 |          8 |         23 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/stairs/stairs_fade_in.cpp                     | C++      |         21 |          0 |          6 |         27 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/stairs/stairs_rainbow.cpp                     | C++      |         29 |          0 |          8 |         37 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animationMode/stairs/stairs_stroboscope.cpp                 | C++      |         17 |          0 |          6 |         23 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animations_constructor.cpp                                  | C++      |         35 |          0 |         14 |         49 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/animations_constructor.hpp                                  | C++      |         26 |          0 |         13 |         39 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/headers/paused.hpp                             | C++      |         15 |          0 |          8 |         23 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/headers/playing.hpp                            | C++      |         11 |          0 |          7 |         18 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/headers/waiting.hpp                            | C++      |         15 |          0 |          8 |         23 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/paused.cpp                                     | C++      |         24 |          0 |         11 |         35 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/playing.cpp                                    | C++      |         10 |          0 |          3 |         13 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/waiting.cpp                                    | C++      |         24 |          0 |         11 |         35 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/headers/leds_controller.hpp                                            | C++      |         41 |          1 |         19 |         61 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/leds_controller.cpp                                                    | C++      |         92 |         12 |         44 |        148 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/main.cpp                                                               | C++      |         46 |          6 |         18 |         70 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/animation.cpp                                                    | C++      |        229 |          5 |         56 |        290 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/cinekave.cpp                                                     | C++      |         66 |          5 |         21 |         92 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/animation.hpp                                            | C++      |        127 |          6 |         41 |        174 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/cinekave.hpp                                             | C++      |         37 |          0 |         14 |         51 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/mode.hpp                                                 | C++      |         20 |          0 |         13 |         33 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/power_off.hpp                                            | C++      |         12 |          0 |          7 |         19 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/headers/simple_colors.hpp                                        | C++      |         27 |          2 |         14 |         43 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/mode.cpp                                                         | C++      |         20 |          0 |         14 |         34 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/power_off.cpp                                                    | C++      |         15 |          0 |          7 |         22 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/simple_colors.cpp                                                | C++      |         83 |          2 |         29 |        114 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils/headers/microphone.hpp                                           | C++      |         38 |          0 |         21 |         59 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils/headers/utils.hpp                                                | C++      |         14 |          0 |          6 |         20 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils/headers/wifi_manager.hpp                                         | C++      |         48 |          4 |         13 |         65 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils/microphone.cpp                                                   | C++      |         89 |          3 |         31 |        123 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils/utils.cpp                                                        | C++      |         23 |          0 |          8 |         31 |
+| /home/clement/Documents/Projets/Arduino/KaveEspv4/src/utils/wifi_manager.cpp                                                 | C++      |        151 |          8 |         16 |        175 |
+| Total                                                                                                                        |          |      1,922 |         59 |        760 |      2,741 |
++------------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

@@ -37,13 +37,11 @@ void WifiManager::scanClient(){
     //check clients for data
     for(i = 0; i < MAX_SRV_CLIENTS; i++){
       if (serverClients[i] && serverClients[i].connected()){
-        if(serverClients[i].available()){
-          //get data from the telnet client and push it to the UART
+        if(serverClients[i].available() >= 4){
           
+          //get data from the telnet client and push it to the UART         
           uint8_t buf[4];
-          while(serverClients[i].available()) {
-            serverClients[i].readBytes(buf, 4);            
-          }
+          serverClients[i].readBytes(buf, 4);            
 
           uint8_t flag = buf[0];
 
@@ -118,6 +116,9 @@ void WifiManager::scanClient(){
               break;
             case Flags::CK_LUMINOSITY:
               ledsController->getCineKaveMode()->setLuminosity(buf[1]);
+              break;
+            case Flags::CK_IS_CONNECTED:
+              ledsController->getCineKaveMode()->setComputerClient(&serverClients[i]);
               break;
             
             //OTHERS

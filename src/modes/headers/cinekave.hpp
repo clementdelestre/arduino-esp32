@@ -1,4 +1,6 @@
 #include <Arduino.h>
+#include "WiFi.h"
+
 #include "mode.hpp"
 
 #include "../../animations/cineKaveMode/headers/waiting.hpp"
@@ -26,8 +28,9 @@ class CineKaveMode : public Mode {
         int luminosity;
         AnimationConstructor* currentAnimation;
 
-        std::chrono::milliseconds lastConnectionReceive;
-        const int connectionTimeOut = 5;
+        WiFiClient* computerClient;
+
+        std::chrono::milliseconds timeCheckComputer;
 
     public:
         CineKaveMode(LedsController* ledsController);
@@ -36,6 +39,7 @@ class CineKaveMode : public Mode {
         void stopMode() override;
         void sendModeData() override;
 
+        void setComputerClient(WiFiClient* computerClient);
         bool getConnectionState();
 
         int getPlayMode();
@@ -46,6 +50,8 @@ class CineKaveMode : public Mode {
 
         void setLuminosity(int luminosity);
         int getLuminosity();
+
+        
 };
 
 #endif

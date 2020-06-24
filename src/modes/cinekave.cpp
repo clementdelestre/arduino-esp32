@@ -9,16 +9,19 @@ CineKaveMode::CineKaveMode(LedsController* ledsController) : Mode(ledsController
      //set mode initial values
      screenColor = RgbColor(150,0,150);
      luminosity = 30;
+     isConnected = false;
      
      currentAnimation = new WaitingCineKaveAnim(ledsController);  
+
+     computerClient = NULL;
+     timeCheckComputer = Utils::getTimeSinceEpoch();
 }
 
 void CineKaveMode::startMode(){
      //reset values each launch
      //save the sensor state
      this->resetStairsSensorValue = ledsController->getUseStairsSensor();
-     ledsController->setUseStairsSensor(true);
-     lastConnectionReceive = Utils::getTimeSinceEpoch()-std::chrono::seconds(connectionTimeOut);    
+     ledsController->setUseStairsSensor(true);  
 }
 
 void CineKaveMode::stopMode(){
@@ -28,6 +31,15 @@ void CineKaveMode::stopMode(){
 
 void CineKaveMode::displayMode(){
      currentAnimation->displayAnimation();
+
+     //check and update connection state
+     if(timeCheckComputer + std::chrono::seconds(1) < Utils::getTimeSinceEpoch()){
+          if(isConnected != getConnectionState()){
+               isConnected = !isConnected;
+               ledsController->getWifiManager()->sendAllClientData(Flags::CK_IS_CONNECTED, isConnected ? 1 : 0, 0, 0);              
+          }
+          timeCheckComputer = Utils::getTimeSinceEpoch();
+     }
 }
 
 void CineKaveMode::sendModeData(){
@@ -37,8 +49,12 @@ void CineKaveMode::sendModeData(){
      ledsController->getWifiManager()->sendAllClientData(Flags::CK_IS_CONNECTED, getConnectionState() ? 1 : 0, 0, 0);
 }
 
+void CineKaveMode::setComputerClient(WiFiClient* computerClient){
+     this->computerClient = computerClient;
+}
+
 bool CineKaveMode::getConnectionState(){
-     return lastConnectionReceive+std::chrono::seconds(connectionTimeOut)>Utils::getTimeSinceEpoch();
+     return computerClient != NULL && computerClient->connected();
 }
 
 int CineKaveMode::getPlayMode(){
@@ -67,7 +83,6 @@ void CineKaveMode::setPlayMode(int playMode){
 
 void CineKaveMode::setScreenColor(RgbColor screenColor){
      this->screenColor = screenColor;
-     lastConnectionReceive = Utils::getTimeSinceEpoch();
 }
 
 RgbColor CineKaveMode::getScreenColor(){

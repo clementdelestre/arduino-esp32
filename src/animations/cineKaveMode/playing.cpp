@@ -7,6 +7,6 @@ PlayingCineKaveAnim::PlayingCineKaveAnim(LedsController* ledsController) : Anima
 }
 
 void PlayingCineKaveAnim::animationContent(){    
-    ledsController->getKaveLeds()->ClearTo(ledsController->getCineKaveMode()->getScreenColor());
+    ledsController->getKaveLeds()->ClearTo(ledsController->getCineKaveMode()->getScreenColor().Dim(ledsController->getCineKaveMode()->getLuminosity()*255/100));
     ledsController->getKaveLeds()->Show(); 
 }
