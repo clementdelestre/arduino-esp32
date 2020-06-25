@@ -76,7 +76,6 @@ class AnimationMode : public Mode {
         AnimationConstructor* currentKaveAnimation;
 
         const  std::vector<int> listAllKaveAnimation = {
-            KAVE_OFF,
             KAVE_WHITE_DOTS,
             KAVE_SIX_BARS_COLORED,
             KAVE_STROBOSCOPE,
