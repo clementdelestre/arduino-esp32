@@ -17,7 +17,7 @@ void KaveColoredBars::animationContent(){
     RgbColor updateBarColor = RgbColor().LinearBlend(barCurrentColor, barTargetColor, colorProgress).Dim(max(255*microphone->getLowFrequency(), (float) 20));
 
     //Le nombre de barres à afficher
-    int numBars = 7*microphone->getLowFrequency() +1;
+    int numBars = 6*microphone->getLowFrequency() +1;
     for(int bar = 0; bar<numBars;bar++){
 
         //To determine the position of the bar, excluding the edges

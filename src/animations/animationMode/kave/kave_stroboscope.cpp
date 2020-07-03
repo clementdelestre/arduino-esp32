@@ -15,7 +15,7 @@ void KaveStroboscope::animationContent(){
     ledsController->getKaveLeds()->ClearTo(0);
     ledsController->getKaveLeds()->Show();
 
-    int delayTime = 245-ledsController->getAnimationMode()->getStroboscopeSpeed();
+    int delayTime = 240-ledsController->getAnimationMode()->getStroboscopeSpeed();
     refreshMs = std::chrono::milliseconds(delayTime);
 
 }

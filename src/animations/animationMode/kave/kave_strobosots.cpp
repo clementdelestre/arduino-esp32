@@ -15,7 +15,7 @@ void KaveStrobodots::animationContent(){
     for(int x = 0; x<countLeds;x++){
         int position = 1+random(ledsController->getKaveLeds()->PixelCount()-2);
 
-        RgbColor color = Utils::getFixedRandomColor();
+        RgbColor color = getColorWithDefault(Utils::getFixedRandomColor());
         
         ledsController->getKaveLeds()->SetPixelColor(position-1, color);
         ledsController->getKaveLeds()->SetPixelColor(position, color);
