@@ -4,7 +4,7 @@
 
 #define KAVE_LED_PIN 26
 //357
-#define KAVE_LED_COUNT 66
+#define KAVE_LED_COUNT 300
 NeoPixelBus<NeoGrbFeature, NeoEsp32Rmt1800KbpsMethod> kaveStrip(KAVE_LED_COUNT, KAVE_LED_PIN);
 
 /////  END LEDS KAVE  /////

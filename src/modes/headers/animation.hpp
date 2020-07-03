@@ -21,6 +21,7 @@
 #include "../../animations/animationMode/kave/headers/kave_side_bars.hpp"
 #include "../../animations/animationMode/kave/headers/kave_three_bars.hpp"
 #include "../../animations/animationMode/kave/headers/kave_moving_bars.hpp"
+#include "../../animations/animationMode/kave/headers/kave_transition_splash.hpp"
 
 #include "../../animations/animationMode/stairs/headers/stairs_rainbow.hpp"
 #include "../../animations/animationMode/stairs/headers/stairs_fade_in.hpp"
@@ -51,6 +52,7 @@ enum AnimationKaveLabel {
     KAVE_SIDE_BARS = 14,
     KAVE_THREE_BARS = 15,
     KAVE_MOVING_BARS = 16,
+    KAVE_TRANSITION_SPLASH= 17,
 };
 
 enum AnimationStairsLabel {
@@ -64,7 +66,7 @@ class AnimationMode : public Mode {
     private:
 
         std::chrono::milliseconds initAnimTime;
-        std::chrono::milliseconds durationAnim;
+        std::chrono::seconds durationAnim;
 
         bool keepAnimation;
         bool mainAutoColor;
@@ -78,7 +80,6 @@ class AnimationMode : public Mode {
         const  std::vector<int> listAllKaveAnimation = {
             KAVE_WHITE_DOTS,
             KAVE_SIX_BARS_COLORED,
-            KAVE_STROBOSCOPE,
             KAVE_CENTERED_BAR,
             KAVE_CHANGE_COLOR,
             KAVE_STROBODOTS,
@@ -92,6 +93,7 @@ class AnimationMode : public Mode {
             KAVE_SIDE_BARS,
             KAVE_THREE_BARS,
             KAVE_MOVING_BARS,
+            KAVE_TRANSITION_SPLASH,
         };
 
         const  std::vector<int> categoryAnimationSoft = {
@@ -115,7 +117,8 @@ class AnimationMode : public Mode {
             KAVE_COLORED_BARS_WITH_EDGES,
             KAVE_FIRE,
             KAVE_SIDE_BARS,  
-            KAVE_THREE_BARS,         
+            KAVE_THREE_BARS,   
+            KAVE_TRANSITION_SPLASH,      
         };
 
         const  std::vector<int> categoryAnimationVeryHard = {
@@ -123,6 +126,7 @@ class AnimationMode : public Mode {
             KAVE_STROBODOTS,
             KAVE_COLORED_BARS,
             KAVE_SCROLL,
+            KAVE_TRANSITION_SPLASH,
         };
 
         std::vector<int> listKaveActivatedAnimation;

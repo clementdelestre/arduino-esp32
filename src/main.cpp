@@ -10,8 +10,8 @@
 #define BUTTON_KAVE 32
 
 // WIFI
-const char* ssid = "Devolo";
-const char* password = "Tatatoum";
+const char* ssid = "Wifi_Bretagne";
+const char* password = "76564E263CAEE74F6199469361";
 
 WiFiMulti wifiMulti;
 WiFiServer wifiServer(2000);

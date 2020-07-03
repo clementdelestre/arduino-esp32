@@ -25,7 +25,6 @@ AnimationMode::AnimationMode(LedsController* ledsController) : Mode(ledsControll
      stroboscopeAutoStop = true;
      stroboscopeEnabled = false;
 
-     
 }
 
 void AnimationMode::init(){
@@ -36,7 +35,7 @@ void AnimationMode::init(){
 
 void AnimationMode::displayMode(){
 
-     if(initAnimTime+durationAnim<Utils::getTimeSinceEpoch() && !keepAnimation && (!stroboscopeEnabled || stroboscopeAutoStop)){        
+     if(initAnimTime+durationAnim<Utils::getTimeSinceEpoch() && !keepAnimation && (!stroboscopeEnabled || stroboscopeAutoStop) && microphone->getLowFrequency()>0.6){        
         nextKaveAnimation();     
      }
 
@@ -102,9 +101,7 @@ void AnimationMode::setKaveAnimation(int kaveAnimation){
 
      initAnimTime = Utils::getTimeSinceEpoch();
 
-     durationAnim = std::chrono::duration_cast< std::chrono::milliseconds >(
-          std::chrono::milliseconds(random(15000)+18000)
-     );   
+     durationAnim = std::chrono::seconds(random(15)+18);
 
      if(stroboscopeEnabled){
           stroboscopeEnabled = false;
@@ -165,6 +162,9 @@ void AnimationMode::setKaveAnimation(int kaveAnimation){
           break;
      case AnimationKaveLabel::KAVE_MOVING_BARS:
           currentKaveAnimation = new KaveMovingBars(ledsController, microphone, kaveAnimation);
+          break;
+     case AnimationKaveLabel::KAVE_TRANSITION_SPLASH:
+          currentKaveAnimation = new KaveTransitionSplash(ledsController, microphone, kaveAnimation);
           break;
      }
 
