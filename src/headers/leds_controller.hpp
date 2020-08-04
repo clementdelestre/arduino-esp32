@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <arduinoFFT.h>
 #include <NeoPixelBus.h>
-#include "../utils/headers/wifi_manager.hpp"
+#include "../utils/headers/wifi_controller.hpp"
 #include "../utils/headers/utils.hpp"
 
 #include "modes/headers/mode.hpp"
@@ -21,7 +21,7 @@
 class LedsController {
 
     private:
-        WifiManager *wifiManager;
+        WifiController* wifiController;
         Mode* currentMode;
         ModeLabel modeLabel;
 
@@ -37,7 +37,7 @@ class LedsController {
         static void ledsThread(void * parameter);
 
     public:
-        LedsController(WifiManager* wifiManager);
+        LedsController(WifiController* WifiController);
         void init();
 
         Mode* getCurrentMode();
@@ -46,7 +46,7 @@ class LedsController {
         NeoPixelBus<NeoGrbFeature, NeoEsp32Rmt1800KbpsMethod> *getKaveLeds();
         NeoPixelBus<NeoGrbFeature, NeoEsp32I2s1800KbpsMethod> *getStairsLeds();
 
-        WifiManager* getWifiManager();
+        WifiController* getWifiManager();
 
         void setUseStairsSensor(bool value);
         bool getUseStairsSensor();

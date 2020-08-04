@@ -99,6 +99,7 @@ void SimpleColorsMode::sendModeData(){
      ledsController->getWifiManager()->sendAllClientData(Flags::SC_ANIMATION, isAnimated ? 1 : 0, 0, 0);
      ledsController->getWifiManager()->sendAllClientData(Flags::SC_SPEED_ANIMATION, animationSpeed, 0, 0);
      ledsController->getWifiManager()->sendAllClientData(Flags::SENSOR_STAIRS, ledsController->getUseStairsSensor() ? 1 : 0, 0, 0);
+     ledsController->getWifiManager()->sendAllClientData(Flags::MAX_LUMINOSITY, Utils::maxLuminosity, 0, 0);
 }
 
 void SimpleColorsMode::changeAnimated(bool animated){     

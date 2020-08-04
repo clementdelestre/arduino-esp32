@@ -9,6 +9,7 @@ enum ModeLabel {simpleColor = 0, animations = 1, cinekave = 2, off = 3,  wifiLoa
 class Utils {
 
     public:
+        static int maxLuminosity;
         static std::chrono::milliseconds getTimeSinceEpoch();
         static RgbColor getRandomColor();
         static RgbColor getFixedRandomColor();

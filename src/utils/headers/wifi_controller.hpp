@@ -1,10 +1,11 @@
 #include "WiFi.h"
 #include "WiFiMulti.h"
+#include <WiFiManager.h>
 
 #define MAX_SRV_CLIENTS 5
 
-#ifndef WIFI_MANAGER_H_INCLUDED
-#define WIFI_MANAGER_H_INCLUDED
+#ifndef WIFI_CONTROLLER_H_INCLUDED
+#define WIFI_CONTROLLER_H_INCLUDED
 
 enum Flags : int {
     CHANGE_MODE = 0,
@@ -39,22 +40,26 @@ enum Flags : int {
 
     //Other
     CHECK_CONNECTION = 100,
+    ACCESS_POINT = 101,
+
+    MAX_LUMINOSITY = 110
 
 };
 
 class LedsController;
 
-class WifiManager {
+class WifiController {
     
     private:
         WiFiServer* wifiServer;
         WiFiMulti* wifiMulti;
+        WiFiManager* wifiManager;
         WiFiClient serverClients[MAX_SRV_CLIENTS];
         LedsController* ledsController;
         
         void disconnectAllClient();
     public:
-        WifiManager(WiFiServer* wifiServer, WiFiMulti* wifiMulti);
+        WifiController(WiFiServer* wifiServer, WiFiMulti* wifiMulti, WiFiManager* wifiManager);
         void setLedsController(LedsController* ledsController);
         void scanClient();
 

@@ -1,21 +1,24 @@
 #include <Arduino.h>
 #include "WiFi.h"
 #include "WiFiMulti.h"
+#include <WiFiManager.h>
 
-#include "utils/headers/wifi_manager.hpp"
+#include "utils/headers/wifi_controller.hpp"
 #include "headers/leds_controller.hpp"
+
 
 //BUTTONS
 #define BUTTON_STAIRS 35
 #define BUTTON_KAVE 32
 
 // WIFI
-const char* ssid = "Wifi_Bretagne";
-const char* password = "76564E263CAEE74F6199469361";
+//Access Point
+const char* ssid_AP = "Kave controller";
 
 WiFiMulti wifiMulti;
 WiFiServer wifiServer(2000);
-WifiManager* wifiManager;
+WifiController* wifiController;
+WiFiManager wm;
 
 //END WIFI
 
@@ -26,13 +29,29 @@ char ptrTaskList[250];
 void setup() {
   Serial.begin(115200);
   
-  wifiManager = new WifiManager(&wifiServer, &wifiMulti);
-  ledsController = new LedsController(wifiManager);
+  wifiController = new WifiController(&wifiServer, &wifiMulti, &wm);
+  ledsController = new LedsController(wifiController);
 
-  wifiManager->setLedsController(ledsController);
+  wifiController->setLedsController(ledsController);
 
   //START WIFI
-  wifiMulti.addAP(ssid, password);
+  WiFi.mode(WIFI_STA);
+
+  wm.setAPStaticIPConfig(IPAddress(192,168,0,1), IPAddress(192,168,0,1), IPAddress(255,255,255,0));
+  wm.setDebugOutput(false);
+
+  if(!wm.autoConnect("The Kave")){
+    Serial.println("Erreur de connexion.");
+  } else {
+    Serial.println("Connexion etablie!");
+    wm.setConfigPortalTimeout(15);
+    wm.startConfigPortal("The Kave - Network Configurator");
+
+    wifiMulti.addAP(WiFi.SSID().c_str(), WiFi.psk().c_str());
+  }
+		
+
+  
 
   ledsController->init();
 
@@ -50,12 +69,6 @@ void setup() {
       delay(1000);
     }
   }
-  if (wifiMulti.run() != WL_CONNECTED) {
-    Serial.println("WiFi connect failed");
-    ledsController->getWifiLoaderMode()->needRestart();
-    delay(1000);
-    ESP.restart();
-  }
 
   //start the server
   wifiServer.begin();
@@ -66,7 +79,7 @@ void setup() {
 }
 
 void loop() {
-  //WifiManager
-  wifiManager->scanClient();
+  //wifiController
+  wifiController->scanClient();
   
 }

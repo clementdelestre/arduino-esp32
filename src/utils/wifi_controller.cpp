@@ -1,16 +1,17 @@
-#include "headers/wifi_manager.hpp"
+#include "headers/wifi_controller.hpp"
 #include "headers/leds_controller.hpp"
 
-WifiManager::WifiManager(WiFiServer* wifiServer, WiFiMulti* wifiMulti){
+WifiController::WifiController(WiFiServer* wifiServer, WiFiMulti* wifiMulti, WiFiManager* wifiManager){
     this->wifiServer = wifiServer;
     this->wifiMulti = wifiMulti;
+    this->wifiManager = wifiManager;
 }
 
-void WifiManager::setLedsController(LedsController* ledsController){
+void WifiController::setLedsController(LedsController* ledsController){
   this->ledsController = ledsController;
 }
 
-void WifiManager::scanClient(){
+void WifiController::scanClient(){
   uint8_t i;
 
   if (wifiMulti->run() == WL_CONNECTED) {
@@ -124,6 +125,13 @@ void WifiManager::scanClient(){
             //OTHERS
             case Flags::CHECK_CONNECTION:
               break;
+            case Flags::ACCESS_POINT:
+              wifiManager->setConfigPortalTimeout(30);
+              wifiManager->startConfigPortal("The Kave - Network Configurator");
+              break;
+            case Flags::MAX_LUMINOSITY:
+              Utils::maxLuminosity = buf[1];
+              break;
 
             default:
               Serial.println("socket: wrong data!");
@@ -152,13 +160,13 @@ void WifiManager::scanClient(){
   }
 }
 
-void WifiManager::disconnectAllClient(){
+void WifiController::disconnectAllClient(){
   for(int i = 0; i < MAX_SRV_CLIENTS; i++) {
     serverClients[i].stop();
   }
 }
 
-void WifiManager::sendData(WiFiClient* client, uint8_t data1, uint8_t data2, uint8_t data3, uint8_t data4){
+void WifiController::sendData(WiFiClient* client, uint8_t data1, uint8_t data2, uint8_t data3, uint8_t data4){
   uint8_t rep[4];
   rep[0] = data1;
   rep[1] = data2;
@@ -167,7 +175,7 @@ void WifiManager::sendData(WiFiClient* client, uint8_t data1, uint8_t data2, uin
   client->write(rep, 4);
 }
 
-void WifiManager::sendAllClientData(uint8_t data1, uint8_t data2, uint8_t data3, uint8_t data4){
+void WifiController::sendAllClientData(uint8_t data1, uint8_t data2, uint8_t data3, uint8_t data4){
   for(int i = 0; i < MAX_SRV_CLIENTS; i++) {
     if (serverClients[i]) sendData(&serverClients[i], data1, data2, data3, data4);
   }

@@ -1,5 +1,7 @@
 #include "headers/utils.hpp"
 
+int Utils::maxLuminosity = 255;
+
 std::chrono::milliseconds Utils::getTimeSinceEpoch(){
     return std::chrono::duration_cast< std::chrono::milliseconds >(
         std::chrono::system_clock::now().time_since_epoch()
@@ -7,19 +9,18 @@ std::chrono::milliseconds Utils::getTimeSinceEpoch(){
 }
 
 RgbColor Utils::getRandomColor(){
-    return RgbColor(random(255), random(255), random(255));
+    return RgbColor(random(maxLuminosity), random(maxLuminosity), random(maxLuminosity));
 }
 
 RgbColor Utils::getFixedRandomColor(){
-    int max_color = 255;
     RgbColor colors[] = { 
-        RgbColor(max_color, 0, 0), 
-        RgbColor(0, max_color, 0), 
-        RgbColor(0, 0, max_color), 
+        RgbColor(maxLuminosity, 0, 0), 
+        RgbColor(0, maxLuminosity, 0), 
+        RgbColor(0, 0, maxLuminosity), 
 
-        RgbColor(max_color, max_color, 0), 
-        RgbColor(max_color, 0, max_color), 
-        RgbColor(0, max_color, max_color)
+        RgbColor(maxLuminosity, maxLuminosity, 0), 
+        RgbColor(maxLuminosity, 0, maxLuminosity), 
+        RgbColor(0, maxLuminosity, maxLuminosity)
     };
 
     return colors[random(6)];

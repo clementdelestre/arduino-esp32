@@ -81,6 +81,7 @@ void AnimationMode::sendModeData(){
      ledsController->getWifiManager()->sendAllClientData(Flags::A_STROBOSCOPE_SPEED, stroboscopeSpeed, 0, 0);
      ledsController->getWifiManager()->sendAllClientData(Flags::A_STOP_AUTO_STROBOSCOPE, stroboscopeAutoStop ? 1 : 0, 0, 0);
      ledsController->getWifiManager()->sendAllClientData(Flags::A_START_STROBOSCOPE, stroboscopeEnabled ? 1 : 0, 0, 0);
+     ledsController->getWifiManager()->sendAllClientData(Flags::MAX_LUMINOSITY, Utils::maxLuminosity, 0, 0);
 }
 
 int AnimationMode::selectRandomKaveAnimation(){

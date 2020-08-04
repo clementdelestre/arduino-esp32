@@ -18,8 +18,8 @@ NeoPixelBus<NeoGrbFeature, NeoEsp32I2s1800KbpsMethod> stairsStrip(STAIRS_LED_COU
 
 /////  END LEDS STAIRS  /////
 
-LedsController::LedsController(WifiManager* wifiManager){
-    this->wifiManager = wifiManager;
+LedsController::LedsController(WifiController* wifiController){
+    this->wifiController = wifiController;
 
 
     //create modes
@@ -67,15 +67,15 @@ NeoPixelBus<NeoGrbFeature, NeoEsp32I2s1800KbpsMethod>* LedsController::getStairs
     return &stairsStrip;
 }
 
-WifiManager* LedsController::getWifiManager(){
-    return wifiManager;
+WifiController* LedsController::getWifiManager(){
+    return wifiController;
 }
 
 void LedsController::setMode(int modeLabel){
     
     if(modeLabel != currentMode->getModeLabel()){
         Serial.println("change mode");
-        wifiManager->sendAllClientData(Flags::CHANGE_MODE, modeLabel, 0, 0);
+        wifiController->sendAllClientData(Flags::CHANGE_MODE, modeLabel, 0, 0);
 
         currentMode->stopMode();
 
@@ -118,7 +118,7 @@ void LedsController::ledsThread(void * parameter){
 
 void LedsController::setUseStairsSensor(bool value){
     useStairsSensor = value;
-    wifiManager->sendAllClientData(Flags::SENSOR_STAIRS, value ? 1 : 0, 0, 0);
+    wifiController->sendAllClientData(Flags::SENSOR_STAIRS, value ? 1 : 0, 0, 0);
 }
 
 bool LedsController::getUseStairsSensor(){
