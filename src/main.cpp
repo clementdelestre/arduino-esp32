@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "WiFi.h"
 #include "WiFiMulti.h"
+#include <ESPmDNS.h>
 #include <WiFiManager.h>
 
 #include "utils/headers/wifi_controller.hpp"
@@ -49,9 +50,6 @@ void setup() {
 
     wifiMulti.addAP(WiFi.SSID().c_str(), WiFi.psk().c_str());
   }
-		
-
-  
 
   ledsController->init();
 
@@ -69,6 +67,15 @@ void setup() {
       delay(1000);
     }
   }
+
+  if(!MDNS.begin("Kave Esp v4")) {
+    Serial.println("Error starting mDNS");
+    return;
+  } 
+
+  MDNS.addService("_kave", "_tcp", 2500);
+  MDNS.addServiceTxt("_kave", "_tcp", "ip", WiFi.localIP().toString());
+
 
   //start the server
   wifiServer.begin();
