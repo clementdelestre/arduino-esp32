@@ -3,8 +3,8 @@
 /////  LEDS KAVE  /////
 
 #define KAVE_LED_PIN 26
-//357
-#define KAVE_LED_COUNT 300
+
+#define KAVE_LED_COUNT 372
 NeoPixelBus<NeoGrbFeature, NeoEsp32Rmt1800KbpsMethod> kaveStrip(KAVE_LED_COUNT, KAVE_LED_PIN);
 
 /////  END LEDS KAVE  /////
@@ -13,7 +13,7 @@ NeoPixelBus<NeoGrbFeature, NeoEsp32Rmt1800KbpsMethod> kaveStrip(KAVE_LED_COUNT, 
 
 #define STAIRS_LED_PIN 27
 //158
-#define STAIRS_LED_COUNT 66
+#define STAIRS_LED_COUNT 104
 NeoPixelBus<NeoGrbFeature, NeoEsp32I2s1800KbpsMethod> stairsStrip(STAIRS_LED_COUNT, STAIRS_LED_PIN);
 
 /////  END LEDS STAIRS  /////

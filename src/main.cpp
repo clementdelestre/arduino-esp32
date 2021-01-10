@@ -27,6 +27,10 @@ LedsController* ledsController;
 
 char ptrTaskList[250];
 
+void WiFiStationConnected(WiFiEvent_t event, WiFiEventInfo_t info){
+    ESP.restart();
+}
+
 void setup() {
   Serial.begin(115200);
   
@@ -34,6 +38,7 @@ void setup() {
   ledsController = new LedsController(wifiController);
 
   wifiController->setLedsController(ledsController);
+  ledsController->init();
 
   //START WIFI
   WiFi.mode(WIFI_STA);
@@ -51,7 +56,7 @@ void setup() {
     wifiMulti.addAP(WiFi.SSID().c_str(), WiFi.psk().c_str());
   }
 
-  ledsController->init();
+  
 
   Serial.println("Connecting Wifi ");
   for (int loops = 10; loops > 0; loops--) {
@@ -80,6 +85,8 @@ void setup() {
   //start the server
   wifiServer.begin();
   wifiServer.setNoDelay(true);
+
+  WiFi.onEvent(WiFiStationConnected, SYSTEM_EVENT_STA_DISCONNECTED);
 
   ledsController->setMode(ModeLabel::simpleColor);
 
