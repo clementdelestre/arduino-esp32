@@ -16,6 +16,7 @@ class KaveTransitionSplash : public AnimationConstructor {
     public:
         KaveTransitionSplash(LedsController* ledsController, Microphone* microphone, int flag);
         void animationContent() override;
+        void init() override;
 
 };
 

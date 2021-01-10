@@ -86,3 +86,8 @@ void KaveThreeBars::animationContent(){
     ledsController->getKaveLeds()->Show();
 
 }
+
+void KaveThreeBars::init(){
+    ledsController->getKaveLeds()->ClearTo(0);
+    ledsController->getKaveLeds()->Show();
+}

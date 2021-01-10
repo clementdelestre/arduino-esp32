@@ -15,7 +15,7 @@ WifiLoaderMode::WifiLoaderMode(LedsController* ledsController) : Mode(ledsContro
 
 void WifiLoaderMode::startMode(){
      ledsController->getKaveLeds()->ClearTo(0);
-     ledsController->getStairsLeds()->ClearTo(0);
+     ledsController->getStairsLeds()->ClearTo(color);
 
      ledsController->getKaveLeds()->Show();
      ledsController->getStairsLeds()->Show();

@@ -23,6 +23,7 @@ class KaveThreeBars : public AnimationConstructor {
     public:
         KaveThreeBars(LedsController* ledsController, Microphone* microphone, int flag);
         void animationContent() override;
+        void init() override;
 
 };
 

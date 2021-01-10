@@ -39,3 +39,8 @@ void KaveTransitionSplash::animationContent(){
     ledsController->getKaveLeds()->Show();
 
 }
+
+void KaveTransitionSplash::init(){
+    ledsController->getKaveLeds()->ClearTo(0);
+    ledsController->getKaveLeds()->Show();
+}

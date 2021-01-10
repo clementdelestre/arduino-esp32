@@ -12,7 +12,7 @@ void StairsRainbow::animationContent(){
         for(float x = 0;x<ledsController->getStairsLeds()->PixelCount();x+=1){
             if(x<ledsController->getStairsLeds()->PixelCount()/3){
                 ledsController->getStairsLeds()->SetPixelColor(x, RgbColor().LinearBlend(RgbColor(255, 0, 0), RgbColor(0, 255, 0), (3*x)/ledsController->getStairsLeds()->PixelCount()).Dim(dimEffect));
-            } else if(x<ledsController->getStairsLeds()->PixelCount()*2/3){
+            } else if(x<=ledsController->getStairsLeds()->PixelCount()*2/3){
                 ledsController->getStairsLeds()->SetPixelColor(x, RgbColor().LinearBlend(RgbColor(0, 255, 0), RgbColor(0, 0, 255), (3*x)/ledsController->getStairsLeds()->PixelCount() -1).Dim(dimEffect));
             } else {
                 ledsController->getStairsLeds()->SetPixelColor(x, RgbColor().LinearBlend(RgbColor(0, 0, 255), RgbColor(255, 0, 0), (3*x)/ledsController->getStairsLeds()->PixelCount() -2).Dim(dimEffect));
