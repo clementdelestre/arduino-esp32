@@ -20,7 +20,7 @@ void KaveGradientFromEdges::animationContent(){
     }
 
     if(position < ledsController->getKaveLeds()->getLength()/2){
-        position+=3;
+        position+=min(ledsController->getKaveLeds()->getLength()/2-position, 3);
         for(int x = 0;x<=position;x++){
             RgbColor color = RgbColor().LinearBlend(colorFrom, colorTo,  (double)2*x/ledsController->getKaveLeds()->getLength());
             ledsController->getKaveLeds()->setPixelColor(x, color);
