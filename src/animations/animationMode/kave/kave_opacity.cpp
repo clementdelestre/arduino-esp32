@@ -1,5 +1,5 @@
 #include "headers/kave_opacity.hpp"
-#include "../../../headers/leds_controller.hpp"
+#include "../../../leds/leds_controller.hpp"
 
 KaveOpacity::KaveOpacity(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){  
     
@@ -14,11 +14,11 @@ KaveOpacity::KaveOpacity(LedsController* ledsController, Microphone* microphone,
 
 void KaveOpacity::animationContent(){    
   
-    for(int x = 0;x<ledsController->getKaveLeds()->PixelCount();x++){
-        ledsController->getKaveLeds()->SetPixelColor(x, color.Dim(255*std::max(microphone->getMediumFrequency(), (float) 0.30)));
+    for(int x = 0;x<ledsController->getKaveLeds()->getLength();x++){
+        ledsController->getKaveLeds()->setPixelColor(x, color.Dim(255*std::max(microphone->getMediumFrequency(), (float) 0.30)));
     }
  
-    ledsController->getKaveLeds()->Show();
+    ledsController->getKaveLeds()->show();
 
     if(timeColor+std::chrono::seconds(8)<Utils::getTimeSinceEpoch()){
         color = getColorWithDefault(Utils::getRandomColor());

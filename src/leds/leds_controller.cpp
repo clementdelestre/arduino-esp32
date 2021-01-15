@@ -1,26 +1,21 @@
-#include "headers/leds_controller.hpp"
+#include "leds_controller.hpp"
+
 
 /////  LEDS KAVE  /////
 
 #define KAVE_LED_PIN 26
-
-#define KAVE_LED_COUNT 372
-NeoPixelBus<NeoGrbFeature, NeoEsp32Rmt1800KbpsMethod> kaveStrip(KAVE_LED_COUNT, KAVE_LED_PIN);
-
-/////  END LEDS KAVE  /////
-
-/////  LEDS STAIRS  /////
+#define KAVE_LED_COUNT 25 //371
 
 #define STAIRS_LED_PIN 27
-//158
-#define STAIRS_LED_COUNT 104
-NeoPixelBus<NeoGrbFeature, NeoEsp32I2s1800KbpsMethod> stairsStrip(STAIRS_LED_COUNT, STAIRS_LED_PIN);
+#define STAIRS_LED_COUNT 25 //104
 
 /////  END LEDS STAIRS  /////
 
 LedsController::LedsController(WifiController* wifiController){
     this->wifiController = wifiController;
 
+    kaveStrip = new LedsStrip(KAVE_LED_COUNT, KAVE_LED_PIN, 0);
+    stairsStrip = new LedsStrip(STAIRS_LED_COUNT, STAIRS_LED_PIN, 1);
 
     //create modes
     wifiLoaderMode = new WifiLoaderMode(this);
@@ -40,10 +35,6 @@ LedsController::LedsController(WifiController* wifiController){
 }
 
 void LedsController::init(){
-    //initialize leds strip
-
-    kaveStrip.Begin();
-    stairsStrip.Begin();
 
     //start mode
     currentMode->startMode();
@@ -59,12 +50,12 @@ void LedsController::init(){
 
 }
 
-NeoPixelBus<NeoGrbFeature, NeoEsp32Rmt1800KbpsMethod>* LedsController::getKaveLeds(){
-    return &kaveStrip;
+LedsStrip* LedsController::getKaveLeds(){
+    return kaveStrip;
 }
 
-NeoPixelBus<NeoGrbFeature, NeoEsp32I2s1800KbpsMethod>* LedsController::getStairsLeds(){
-    return &stairsStrip;
+LedsStrip* LedsController::getStairsLeds(){
+    return stairsStrip;
 }
 
 WifiController* LedsController::getWifiManager(){

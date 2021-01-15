@@ -1,10 +1,10 @@
 #include "headers/kave_scroll.hpp"
-#include "../../../headers/leds_controller.hpp"
+#include "../../../leds/leds_controller.hpp"
 
 KaveScroll::KaveScroll(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){  
     refreshMs = std::chrono::milliseconds(10); 
     lastSpawn = Utils::getTimeSinceEpoch();  
-    ledsController->getKaveLeds()->ClearTo(0);
+    ledsController->getKaveLeds()->clearTo(0);
 }
 
 void KaveScroll::animationContent(){    
@@ -14,8 +14,8 @@ void KaveScroll::animationContent(){
         RgbColor targetColor = getColorWithDefault(Utils::getFixedRandomColor());
         for(int x = 0;x<10;x++){        
             RgbColor color = RgbColor().LinearBlend(RgbColor(0, 0, 0), targetColor, progress);
-            ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2 + x, color);
-            ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2 - x, color);
+            ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2 + x, color);
+            ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2 - x, color);
             progress = (x < 5) ? progress+0.2 : progress-0.2;
         }
 
@@ -23,11 +23,11 @@ void KaveScroll::animationContent(){
         
     } 
     
-    for(int x = ledsController->getKaveLeds()->PixelCount()/2;x>0;x--){
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2+x, ledsController->getKaveLeds()->GetPixelColor(ledsController->getKaveLeds()->PixelCount()/2+x-1));
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2-x, ledsController->getKaveLeds()->GetPixelColor(ledsController->getKaveLeds()->PixelCount()/2-x+1));
+    for(int x = ledsController->getKaveLeds()->getLength()/2;x>0;x--){
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2+x, ledsController->getKaveLeds()->getPixelColor(ledsController->getKaveLeds()->getLength()/2+x-1));
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2-x, ledsController->getKaveLeds()->getPixelColor(ledsController->getKaveLeds()->getLength()/2-x+1));
     }
 
-    ledsController->getKaveLeds()->Show();
+    ledsController->getKaveLeds()->show();
 
 }

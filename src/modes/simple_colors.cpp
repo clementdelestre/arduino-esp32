@@ -1,6 +1,6 @@
 #include "headers/simple_colors.hpp"
 
-#include "../headers/leds_controller.hpp"
+#include "../leds/leds_controller.hpp"
 
 SimpleColorsMode::SimpleColorsMode(LedsController* ledsController) : Mode(ledsController){
      this->ledsController = ledsController;
@@ -34,8 +34,8 @@ void SimpleColorsMode::displayMode(){
      if(isAnimated){
           kaveCurrentColor = RgbColor().LinearBlend(animInitColor, targetColor, posColor);
 
-          ledsController->getKaveLeds()->ClearTo(kaveCurrentColor);
-          ledsController->getKaveLeds()->Show();
+          ledsController->getKaveLeds()->clearTo(kaveCurrentColor);
+          ledsController->getKaveLeds()->show();
 
           if(ledsController->canShowStairs()){
                if(posStairsColor >= 1 && isStairsDisplayed){ //Stairs is already on
@@ -46,13 +46,13 @@ void SimpleColorsMode::displayMode(){
                     if(posStairsColor>=1) isStairsDisplayed = true;
                }
 
-               ledsController->getStairsLeds()->ClearTo(stairsCurrentColor);
-               ledsController->getStairsLeds()->Show();
+               ledsController->getStairsLeds()->clearTo(stairsCurrentColor);
+               ledsController->getStairsLeds()->show();
           } else {
                isStairsDisplayed = false;
                posStairsColor = 0;
-               ledsController->getStairsLeds()->ClearTo(0);
-               ledsController->getStairsLeds()->Show();
+               ledsController->getStairsLeds()->clearTo(0);
+               ledsController->getStairsLeds()->show();
           }        
 
           posColor+=0.01; 
@@ -66,15 +66,15 @@ void SimpleColorsMode::displayMode(){
           
           delay(5 + (200-animationSpeed));
      } else {
-          ledsController->getKaveLeds()->ClearTo(kaveCurrentColor);
-          ledsController->getKaveLeds()->Show();
+          ledsController->getKaveLeds()->clearTo(kaveCurrentColor);
+          ledsController->getKaveLeds()->show();
 
           if(ledsController->canShowStairs()){
-               ledsController->getStairsLeds()->ClearTo(stairsCurrentColor);
-               ledsController->getStairsLeds()->Show();
+               ledsController->getStairsLeds()->clearTo(stairsCurrentColor);
+               ledsController->getStairsLeds()->show();
           } else {
-               ledsController->getStairsLeds()->ClearTo(0);
-               ledsController->getStairsLeds()->Show();
+               ledsController->getStairsLeds()->clearTo(0);
+               ledsController->getStairsLeds()->show();
           }   
 
           delay(40);

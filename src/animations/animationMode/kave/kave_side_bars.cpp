@@ -1,5 +1,5 @@
 #include "headers/kave_side_bars.hpp"
-#include "../../../headers/leds_controller.hpp"
+#include "../../../leds/leds_controller.hpp"
 
 KaveSideBars::KaveSideBars(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){  
     refreshMs = std::chrono::milliseconds(6);   
@@ -12,7 +12,7 @@ KaveSideBars::KaveSideBars(LedsController* ledsController, Microphone* microphon
 
 void KaveSideBars::animationContent(){    
   
-    int activeLedTarget = ledsController->getKaveLeds()->PixelCount()*microphone->getLowFrequency()/2;
+    int activeLedTarget = ledsController->getKaveLeds()->getLength()*microphone->getLowFrequency()/2;
 
     RgbColor activeColor = RgbColor().LinearBlend(currentColor, targetColor, progressColor);
     RgbColor inactiveColor = activeColor.Dim(10);
@@ -23,14 +23,14 @@ void KaveSideBars::animationContent(){
         ledActivated-=3;
     }
 
-    for(int x = ledsController->getKaveLeds()->PixelCount()/2; x>=ledActivated; x--){
-        ledsController->getKaveLeds()->SetPixelColor(x, inactiveColor);    
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()-x, inactiveColor);   
+    for(int x = ledsController->getKaveLeds()->getLength()/2; x>=ledActivated; x--){
+        ledsController->getKaveLeds()->setPixelColor(x, inactiveColor);    
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()-x, inactiveColor);   
     }
     
     for(int x = 0;x<ledActivated;x++){
-        ledsController->getKaveLeds()->SetPixelColor(x, activeColor);
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()-x, activeColor);
+        ledsController->getKaveLeds()->setPixelColor(x, activeColor);
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()-x, activeColor);
     }
 
     progressColor+=0.005;
@@ -41,7 +41,7 @@ void KaveSideBars::animationContent(){
         progressColor = 0;
     }
  
-    ledsController->getKaveLeds()->Show();
+    ledsController->getKaveLeds()->show();
 
     if(ledActivated <= activeLedTarget){
         refreshMs = std::chrono::milliseconds(4);

@@ -1,10 +1,10 @@
 #include "headers/kave_fire.hpp"
-#include "../../../headers/leds_controller.hpp"
+#include "../../../leds/leds_controller.hpp"
 
 KaveFire::KaveFire(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){  
     refreshMs = std::chrono::milliseconds(10);   
 
-    ledsController->getKaveLeds()->ClearTo(0);
+    ledsController->getKaveLeds()->clearTo(0);
     currentColor = RgbColor(255, 0, 0);
     targetColor = RgbColor(255, 255, 0);
     progressColor = 0;
@@ -13,19 +13,20 @@ KaveFire::KaveFire(LedsController* ledsController, Microphone* microphone, int f
 void KaveFire::animationContent(){    
   
     float micVal = microphone->getMediumFrequency();
+    
 
-    ledsController->getKaveLeds()->ShiftRight(1);
+    ledsController->getKaveLeds()->shiftRight(1);
 
     if(micVal>0.3){
-        ledsController->getKaveLeds()->SetPixelColor(0, RgbColor().LinearBlend(currentColor, targetColor, progressColor).Dim(255*micVal));
+        ledsController->getKaveLeds()->setPixelColor(0, RgbColor().LinearBlend(currentColor, targetColor, progressColor).Dim(255*micVal));
     }
     
     
-    for(int x = 0;x<ledsController->getKaveLeds()->PixelCount();x++){
-        ledsController->getKaveLeds()->SetPixelColor(x, ledsController->getKaveLeds()->GetPixelColor(x).Dim(254));
+    for(int x = 0;x<ledsController->getKaveLeds()->getLength();x++){
+        ledsController->getKaveLeds()->setPixelColor(x, ledsController->getKaveLeds()->getPixelColor(x).Dim(254));
     }
     
-    ledsController->getKaveLeds()->Show();
+    ledsController->getKaveLeds()->show();
 
     if(progressColor >= 1){
         RgbColor oldCurrentColor = currentColor;
@@ -36,6 +37,6 @@ void KaveFire::animationContent(){
 
     progressColor+=0.005;
  
-    ledsController->getKaveLeds()->Show();
+    ledsController->getKaveLeds()->show();
 
 }

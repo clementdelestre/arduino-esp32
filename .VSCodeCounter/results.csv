@@ -47,7 +47,7 @@
 "/home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/paused.cpp", "C++", 24, 0, 11, 35
 "/home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/playing.cpp", "C++", 10, 0, 3, 13
 "/home/clement/Documents/Projets/Arduino/KaveEspv4/src/animations/cineKaveMode/waiting.cpp", "C++", 24, 0, 11, 35
-"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/headers/leds_controller.hpp", "C++", 44, 1, 19, 64
+"/home/clement/Documents/Projets/Arduino/KaveEspv4/src/leds/leds_controller.hpp", "C++", 44, 1, 19, 64
 "/home/clement/Documents/Projets/Arduino/KaveEspv4/src/leds_controller.cpp", "C++", 97, 13, 44, 154
 "/home/clement/Documents/Projets/Arduino/KaveEspv4/src/main.cpp", "C++", 48, 6, 18, 72
 "/home/clement/Documents/Projets/Arduino/KaveEspv4/src/modes/animation.cpp", "C++", 246, 5, 56, 307

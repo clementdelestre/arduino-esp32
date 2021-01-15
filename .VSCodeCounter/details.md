@@ -59,7 +59,7 @@ Total : 69 files,  2301 codes, 69 comments, 904 blanks, all 3274 lines
 | [src/animations/cineKaveMode/paused.cpp](/src/animations/cineKaveMode/paused.cpp) | C++ | 24 | 0 | 11 | 35 |
 | [src/animations/cineKaveMode/playing.cpp](/src/animations/cineKaveMode/playing.cpp) | C++ | 10 | 0 | 3 | 13 |
 | [src/animations/cineKaveMode/waiting.cpp](/src/animations/cineKaveMode/waiting.cpp) | C++ | 24 | 0 | 11 | 35 |
-| [src/headers/leds_controller.hpp](/src/headers/leds_controller.hpp) | C++ | 44 | 1 | 19 | 64 |
+| [src/leds/leds_controller.hpp](/src/leds/leds_controller.hpp) | C++ | 44 | 1 | 19 | 64 |
 | [src/leds_controller.cpp](/src/leds_controller.cpp) | C++ | 97 | 13 | 44 | 154 |
 | [src/main.cpp](/src/main.cpp) | C++ | 48 | 6 | 18 | 72 |
 | [src/modes/animation.cpp](/src/modes/animation.cpp) | C++ | 246 | 5 | 56 | 307 |

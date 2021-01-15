@@ -1,5 +1,5 @@
 #include "headers/stairs_fade_in.hpp"
-#include "../../../headers/leds_controller.hpp"
+#include "../../../leds/leds_controller.hpp"
 
 StairsFadeIn::StairsFadeIn(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){
       
@@ -10,9 +10,13 @@ StairsFadeIn::StairsFadeIn(LedsController* ledsController, Microphone* microphon
 
 void StairsFadeIn::animationContent(){
     if(progress <1){
-        ledsController->getStairsLeds()->ClearTo(RgbColor().LinearBlend(0, color, progress));
-        ledsController->getStairsLeds()->Show();
+        ledsController->getStairsLeds()->clearTo(RgbColor().LinearBlend(0, color, progress));
+        ledsController->getStairsLeds()->show();
         progress+=0.05;
+    }
+
+    if(progress == 1){
+        refreshMs = std::chrono::milliseconds(100); ;
     }
 }
 
@@ -21,6 +25,6 @@ void StairsFadeIn::init(){
     if(!ledsController->getAnimationMode()->getMainAutoColor()){
         color = ledsController->getAnimationMode()->getMainColor(); 
     } else {
-        color = Utils::getRandomColor(); 
+        color = Utils::getFixedRandomColor(); 
     }
 }

@@ -1,6 +1,6 @@
 #include "headers/cinekave.hpp"
 
-#include "../headers/leds_controller.hpp"
+#include "../leds/leds_controller.hpp"
 
 CineKaveMode::CineKaveMode(LedsController* ledsController) : Mode(ledsController){
      this->ledsController = ledsController;

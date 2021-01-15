@@ -1,5 +1,5 @@
 #include "headers/kave_centered_bar.hpp"
-#include "../../../headers/leds_controller.hpp"
+#include "../../../leds/leds_controller.hpp"
 
 KaveCenteredBar::KaveCenteredBar(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){  
 
@@ -13,7 +13,7 @@ KaveCenteredBar::KaveCenteredBar(LedsController* ledsController, Microphone* mic
 
 void KaveCenteredBar::animationContent(){    
   
-    int activeLedTarget = ledsController->getKaveLeds()->PixelCount()*microphone->getMediumFrequency()/2;
+    int activeLedTarget = ledsController->getKaveLeds()->getLength()*microphone->getMediumFrequency()/2;
 
     if(activeLedTarget == 0) activeLedTarget = 1;
 
@@ -26,14 +26,14 @@ void KaveCenteredBar::animationContent(){
         ledActivated-=3;
     }
 
-    for(int x = ledsController->getKaveLeds()->PixelCount()/2; x>=ledActivated && x>2; x--){
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2+x, inactiveColor);    
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2-x, inactiveColor);   
+    for(int x = ledsController->getKaveLeds()->getLength()/2; x>=ledActivated && x>2; x--){
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2+x, inactiveColor);    
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2-x, inactiveColor);   
     }
     
     for(int x = 0;x<ledActivated;x++){
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2+x, activeColor);
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2-x, activeColor);
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2+x, activeColor);
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2-x, activeColor);
     }
 
     progressColor+=0.005;
@@ -44,7 +44,7 @@ void KaveCenteredBar::animationContent(){
         progressColor = 0;
     }
  
-    ledsController->getKaveLeds()->Show();
+    ledsController->getKaveLeds()->show();
 
     if(ledActivated <= activeLedTarget){
         refreshMs = std::chrono::milliseconds(20);

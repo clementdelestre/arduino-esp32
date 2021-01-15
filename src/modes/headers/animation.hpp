@@ -146,6 +146,7 @@ class AnimationMode : public Mode {
         int stroboscopeSpeed;
         bool stroboscopeAutoStop;
         bool stroboscopeEnabled;
+        int stroboscopeLuminosity;
         AnimationConstructor* stroboscopeOldStairsAnim;
 
     public:
@@ -188,6 +189,8 @@ class AnimationMode : public Mode {
         void setStroboscopeSpeed(int speed);
         int getStroboscopeSpeed();
         void setStroboscopeAutoStop(bool autoStop);
+        void setStroboscopeLuminosity(int luminosity);
+        int getStroboscopeLuminosity();
         void startStroboscope();
         
 };

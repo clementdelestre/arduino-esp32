@@ -1,7 +1,7 @@
 #include <Arduino.h>
-#include <NeoPixelBus.h>
 #include "../utils/headers/utils.hpp"
 #include "../utils/headers/microphone.hpp"
+#include "../leds/components/rgbColor.hpp"
 
 #ifndef ANIMATION_CONSTRUCTOR_H_INCLUDED
 #define ANIMATION_CONSTRUCTOR_H_INCLUDED

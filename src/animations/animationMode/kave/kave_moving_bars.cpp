@@ -1,5 +1,5 @@
 #include "headers/kave_moving_bars.hpp"
-#include "../../../headers/leds_controller.hpp"
+#include "../../../leds/leds_controller.hpp"
 
 KaveMovingBars::KaveMovingBars(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){  
     refreshMs = std::chrono::milliseconds(6);   
@@ -9,8 +9,8 @@ KaveMovingBars::KaveMovingBars(LedsController* ledsController, Microphone* micro
     currentColor = RgbColor(0, 0, 0);
     targetColor = Utils::getRandomColor();
 
-    currentPositionBar1 = ledsController->getKaveLeds()->PixelCount()/2;
-    currentPositionBar2 = ledsController->getKaveLeds()->PixelCount()/2;
+    currentPositionBar1 = ledsController->getKaveLeds()->getLength()/2;
+    currentPositionBar2 = ledsController->getKaveLeds()->getLength()/2;
     changePositionTime = Utils::getTimeSinceEpoch();
 
     targetPositionBar1 = getRandomPosition();
@@ -19,9 +19,9 @@ KaveMovingBars::KaveMovingBars(LedsController* ledsController, Microphone* micro
 
 void KaveMovingBars::animationContent(){    
   
-    ledsController->getKaveLeds()->ClearTo(0);
+    ledsController->getKaveLeds()->clearTo(0);
 
-    int activeLedTarget = ledsController->getKaveLeds()->PixelCount()*microphone->getLowFrequency()/ratioBar;
+    int activeLedTarget = ledsController->getKaveLeds()->getLength()*microphone->getLowFrequency()/ratioBar;
 
     if(changePositionTime + std::chrono::milliseconds(17) < Utils::getTimeSinceEpoch()){
         if(currentPositionBar1 < targetPositionBar1){
@@ -48,11 +48,11 @@ void KaveMovingBars::animationContent(){
     }
     
     for(int x = 0;x<ledActivated;x++){
-        ledsController->getKaveLeds()->SetPixelColor(currentPositionBar1+x, activeColor);
-        ledsController->getKaveLeds()->SetPixelColor(currentPositionBar1-x, activeColor);
+        ledsController->getKaveLeds()->setPixelColor(currentPositionBar1+x, activeColor);
+        ledsController->getKaveLeds()->setPixelColor(currentPositionBar1-x, activeColor);
 
-        ledsController->getKaveLeds()->SetPixelColor(currentPositionBar2+x, activeColor);
-        ledsController->getKaveLeds()->SetPixelColor(currentPositionBar2-x, activeColor);
+        ledsController->getKaveLeds()->setPixelColor(currentPositionBar2+x, activeColor);
+        ledsController->getKaveLeds()->setPixelColor(currentPositionBar2-x, activeColor);
     }
 
     progressColor+=0.005;
@@ -63,7 +63,7 @@ void KaveMovingBars::animationContent(){
         progressColor = 0;
     }
  
-    ledsController->getKaveLeds()->Show();
+    ledsController->getKaveLeds()->show();
 
     if(currentPositionBar1 == targetPositionBar1){
         targetPositionBar1 = getRandomPosition();
@@ -83,5 +83,5 @@ void KaveMovingBars::animationContent(){
 
 
 int KaveMovingBars::getRandomPosition(){
-    return ledsController->getKaveLeds()->PixelCount()/ratioBar + random(ledsController->getKaveLeds()->PixelCount()-ledsController->getKaveLeds()->PixelCount()/(ratioBar/2));
+    return ledsController->getKaveLeds()->getLength()/ratioBar + random(ledsController->getKaveLeds()->getLength()-ledsController->getKaveLeds()->getLength()/(ratioBar/2));
 }

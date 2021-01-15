@@ -1,6 +1,6 @@
 #include "animations/animations_constructor.hpp"
 
-#include "../headers/leds_controller.hpp"
+#include "../leds/leds_controller.hpp"
 
 AnimationConstructor::AnimationConstructor(LedsController* ledsController){
     this->ledsController = ledsController;

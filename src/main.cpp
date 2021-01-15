@@ -5,7 +5,7 @@
 #include <WiFiManager.h>
 
 #include "utils/headers/wifi_controller.hpp"
-#include "headers/leds_controller.hpp"
+#include "leds/leds_controller.hpp"
 
 
 //BUTTONS
@@ -50,7 +50,7 @@ void setup() {
     Serial.println("Erreur de connexion.");
   } else {
     Serial.println("Connexion etablie!");
-    wm.setConfigPortalTimeout(15);
+    wm.setConfigPortalTimeout(10);
     wm.startConfigPortal("The Kave - Network Configurator");
 
     wifiMulti.addAP(WiFi.SSID().c_str(), WiFi.psk().c_str());

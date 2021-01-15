@@ -1,8 +1,9 @@
 #include <Arduino.h>
 #include <arduinoFFT.h>
-#include <NeoPixelBus.h>
 #include "../utils/headers/wifi_controller.hpp"
 #include "../utils/headers/utils.hpp"
+
+#include "components/ledsStrip.hpp"
 
 #include "modes/headers/mode.hpp"
 #include "modes/headers/wifi_loader.hpp"
@@ -31,6 +32,9 @@ class LedsController {
         CineKaveMode* cineKaveMode;
         PowerOffMode* offMode;
 
+        LedsStrip* kaveStrip;
+        LedsStrip* stairsStrip;
+
         bool stairsSensorValue;
         bool useStairsSensor;
 
@@ -43,8 +47,8 @@ class LedsController {
         Mode* getCurrentMode();
         void setMode(int modeLabel);
 
-        NeoPixelBus<NeoGrbFeature, NeoEsp32Rmt1800KbpsMethod> *getKaveLeds();
-        NeoPixelBus<NeoGrbFeature, NeoEsp32I2s1800KbpsMethod> *getStairsLeds();
+        LedsStrip* getKaveLeds();
+        LedsStrip* getStairsLeds();
 
         WifiController* getWifiManager();
 

@@ -1,6 +1,6 @@
 #include "headers/wifi_loader.hpp"
 
-#include "../headers/leds_controller.hpp"
+#include "../leds/leds_controller.hpp"
 
 WifiLoaderMode::WifiLoaderMode(LedsController* ledsController) : Mode(ledsController){
      this->ledsController = ledsController;
@@ -14,21 +14,21 @@ WifiLoaderMode::WifiLoaderMode(LedsController* ledsController) : Mode(ledsContro
 }
 
 void WifiLoaderMode::startMode(){
-     ledsController->getKaveLeds()->ClearTo(0);
-     ledsController->getStairsLeds()->ClearTo(color);
+     ledsController->getKaveLeds()->clearTo(0);
+     ledsController->getStairsLeds()->clearTo(color);
 
-     ledsController->getKaveLeds()->Show();
-     ledsController->getStairsLeds()->Show();
+     ledsController->getKaveLeds()->show();
+     ledsController->getStairsLeds()->show();
 }
 
 void WifiLoaderMode::displayMode(){
 
      if(restartAnim){
-          for(int x = 0;x<ledsController->getKaveLeds()->PixelCount();x++){
-              ledsController->getKaveLeds()->SetPixelColor(x, restartColor);
+          for(int x = 0;x<ledsController->getKaveLeds()->getLength();x++){
+              ledsController->getKaveLeds()->setPixelColor(x, restartColor);
           }
 
-          ledsController->getKaveLeds()->Show();
+          ledsController->getKaveLeds()->show();
 
           delay(100);
           return;
@@ -36,20 +36,20 @@ void WifiLoaderMode::displayMode(){
 
     if(lastAnim + std::chrono::seconds(1) < Utils::getTimeSinceEpoch()){
           for(int x = 0;x<lengthBar;x++){
-              ledsController->getKaveLeds()->SetPixelColor(x, color);
+              ledsController->getKaveLeds()->setPixelColor(x, color);
           }
 
-          ledsController->getKaveLeds()->Show();
+          ledsController->getKaveLeds()->show();
           lastAnim = std::chrono::duration_cast< std::chrono::seconds >(
                Utils::getTimeSinceEpoch()
           );
     }
 
-     for(int x = ledsController->getKaveLeds()->PixelCount();x>=0;x--){
-          ledsController->getKaveLeds()->SetPixelColor(x, ledsController->getKaveLeds()->GetPixelColor(x-1));
+     for(int x = ledsController->getKaveLeds()->getLength();x>=0;x--){
+          ledsController->getKaveLeds()->setPixelColor(x, ledsController->getKaveLeds()->getPixelColor(x-1));
      }
 
-     ledsController->getKaveLeds()->Show();
+     ledsController->getKaveLeds()->show();
 
      delay(30);  
 }

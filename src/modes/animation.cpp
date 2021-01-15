@@ -1,6 +1,6 @@
 #include "headers/animation.hpp"
 
-#include "../headers/leds_controller.hpp"
+#include "../leds/leds_controller.hpp"
 
 AnimationMode::AnimationMode(LedsController* ledsController) : Mode(ledsController){
      this->ledsController = ledsController;
@@ -24,6 +24,7 @@ AnimationMode::AnimationMode(LedsController* ledsController) : Mode(ledsControll
      stroboscopeSpeed = 50;
      stroboscopeAutoStop = true;
      stroboscopeEnabled = false;
+     stroboscopeLuminosity = 150;
 
 }
 
@@ -55,8 +56,8 @@ void AnimationMode::displayMode(){
           isStairsDisplayed = true;
      } else if(!ledsController->canShowStairs() && isStairsDisplayed){
           isStairsDisplayed = false;
-          ledsController->getStairsLeds()->ClearTo(0);
-          ledsController->getStairsLeds()->Show();
+          ledsController->getStairsLeds()->clearTo(0);
+          ledsController->getStairsLeds()->show();
      }
 }
 
@@ -82,6 +83,7 @@ void AnimationMode::sendModeData(){
      ledsController->getWifiManager()->sendAllClientData(Flags::A_STOP_AUTO_STROBOSCOPE, stroboscopeAutoStop ? 1 : 0, 0, 0);
      ledsController->getWifiManager()->sendAllClientData(Flags::A_START_STROBOSCOPE, stroboscopeEnabled ? 1 : 0, 0, 0);
      ledsController->getWifiManager()->sendAllClientData(Flags::MAX_LUMINOSITY, Utils::maxLuminosity, 0, 0);
+     ledsController->getWifiManager()->sendAllClientData(Flags::A_STROBOSCOPE_LUMINOSITY, this->stroboscopeLuminosity, 0, 0);
 }
 
 int AnimationMode::selectRandomKaveAnimation(){
@@ -292,6 +294,14 @@ int AnimationMode::getStroboscopeSpeed(){
 void AnimationMode::setStroboscopeAutoStop(bool autoStop){
      stroboscopeAutoStop = autoStop;
      ledsController->getWifiManager()->sendAllClientData(Flags::A_STOP_AUTO_STROBOSCOPE, stroboscopeAutoStop ? 1 : 0, 0, 0);
+}
+
+void AnimationMode::setStroboscopeLuminosity(int luminosity){
+     this->stroboscopeLuminosity = luminosity;
+}
+
+int AnimationMode::getStroboscopeLuminosity(){
+     return this->stroboscopeLuminosity;
 }
 
 void AnimationMode::startStroboscope(){   

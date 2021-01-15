@@ -1,5 +1,5 @@
-#include <NeoPixelBus.h>
 #include <chrono>
+#include "../../leds/components/rgbColor.hpp"
 
 #ifndef UTILS_H_INCLUDED
 #define UTILS_H_INCLUDED

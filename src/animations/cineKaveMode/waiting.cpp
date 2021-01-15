@@ -1,5 +1,5 @@
 #include "headers/waiting.hpp"
-#include "../../headers/leds_controller.hpp"
+#include "../../leds/leds_controller.hpp"
 
 WaitingCineKaveAnim::WaitingCineKaveAnim(LedsController* ledsController) : AnimationConstructor(ledsController){  
     this->flag = CinePlayMode::WAITING;
@@ -18,16 +18,16 @@ void WaitingCineKaveAnim::animationContent(){
         currentColor = RgbColor().LinearBlend(0, defaultColor, progressColor);
     }
     
-    ledsController->getKaveLeds()->ClearTo(currentColor);
-    ledsController->getKaveLeds()->Show(); 
+    ledsController->getKaveLeds()->clearTo(currentColor);
+    ledsController->getKaveLeds()->show(); 
     
 
     if(ledsController->canShowStairs()){
-        ledsController->getStairsLeds()->ClearTo(currentColor);
-        ledsController->getStairsLeds()->Show();
+        ledsController->getStairsLeds()->clearTo(currentColor);
+        ledsController->getStairsLeds()->show();
     } else {
-        ledsController->getStairsLeds()->ClearTo(0);
-        ledsController->getStairsLeds()->Show();
+        ledsController->getStairsLeds()->clearTo(0);
+        ledsController->getStairsLeds()->show();
     }
     
 
