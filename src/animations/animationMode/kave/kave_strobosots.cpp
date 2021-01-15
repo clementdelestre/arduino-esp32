@@ -1,5 +1,5 @@
 #include "headers/kave_strobodots.hpp"
-#include "../../../headers/leds_controller.hpp"
+#include "../../../leds/leds_controller.hpp"
 
 KaveStrobodots::KaveStrobodots(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){  
 
@@ -8,20 +8,20 @@ KaveStrobodots::KaveStrobodots(LedsController* ledsController, Microphone* micro
 
 void KaveStrobodots::animationContent(){    
   
-    ledsController->getKaveLeds()->ClearTo(0);
+    ledsController->getKaveLeds()->clearTo(0);
     
     int countLeds = maxLeds*microphone->getMediumFrequency();
 
     for(int x = 0; x<countLeds;x++){
-        int position = 1+random(ledsController->getKaveLeds()->PixelCount()-2);
+        int position = 1+random(ledsController->getKaveLeds()->getLength()-2);
 
         RgbColor color = getColorWithDefault(Utils::getFixedRandomColor());
         
-        ledsController->getKaveLeds()->SetPixelColor(position-1, color);
-        ledsController->getKaveLeds()->SetPixelColor(position, color);
-        ledsController->getKaveLeds()->SetPixelColor(position+1, color);
+        ledsController->getKaveLeds()->setPixelColor(position-1, color);
+        ledsController->getKaveLeds()->setPixelColor(position, color);
+        ledsController->getKaveLeds()->setPixelColor(position+1, color);
     }
 
-    ledsController->getKaveLeds()->Show();
+    ledsController->getKaveLeds()->show();
 
 }

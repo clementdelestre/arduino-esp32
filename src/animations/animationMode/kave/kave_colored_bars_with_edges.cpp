@@ -1,5 +1,5 @@
 #include "headers/kave_colored_bars_with_edges.hpp"
-#include "../../../headers/leds_controller.hpp"
+#include "../../../leds/leds_controller.hpp"
 
 KaveColoredBarsWithEdges::KaveColoredBarsWithEdges(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){  
 
@@ -13,25 +13,25 @@ KaveColoredBarsWithEdges::KaveColoredBarsWithEdges(LedsController* ledsControlle
 
 void KaveColoredBarsWithEdges::animationContent(){    
   
-    ledsController->getKaveLeds()->ClearTo(0);
+    ledsController->getKaveLeds()->clearTo(0);
 
     RgbColor updateEdgesColor = RgbColor().LinearBlend(edgesCurrentColor, edgesTargetColor, colorProgress);
     RgbColor updateBarColor = RgbColor().LinearBlend(barCurrentColor, barTargetColor, colorProgress).Dim(max(255*microphone->getLowFrequency(), (float) 20));
 
-    for(int x = 0; x<ledsController->getKaveLeds()->PixelCount()/8; x++){
-        RgbColor localColor =  updateEdgesColor.Dim(255-255*x/(ledsController->getKaveLeds()->PixelCount()/8));
-        ledsController->getKaveLeds()->SetPixelColor(x, localColor);
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount() - x, localColor);
+    for(int x = 0; x<ledsController->getKaveLeds()->getLength()/8; x++){
+        RgbColor localColor =  updateEdgesColor.Dim(255-255*x/(ledsController->getKaveLeds()->getLength()/8));
+        ledsController->getKaveLeds()->setPixelColor(x, localColor);
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength() - x, localColor);
     }
 
     //Le nombre de barres à afficher
     int numBars = 5*microphone->getMediumFrequency();
     for(int bar = 0; bar<numBars;bar++){
         //To determine the position of the bar, excluding the edges
-        int initialLed = ledsController->getKaveLeds()->PixelCount()/8 + random(ledsController->getKaveLeds()->PixelCount()*3/4-lengthBar);    
+        int initialLed = ledsController->getKaveLeds()->getLength()/8 + random(ledsController->getKaveLeds()->getLength()*3/4-lengthBar);    
 
         for(int x = 0; x<lengthBar;x++){
-            ledsController->getKaveLeds()->SetPixelColor(initialLed + x, updateBarColor);
+            ledsController->getKaveLeds()->setPixelColor(initialLed + x, updateBarColor);
         }
 
     }
@@ -48,6 +48,6 @@ void KaveColoredBarsWithEdges::animationContent(){
         colorProgress = 0;
     }
 
-    ledsController->getKaveLeds()->Show();
+    ledsController->getKaveLeds()->show();
 
 }

@@ -1,6 +1,6 @@
 #include "headers/utils.hpp"
 
-int Utils::maxLuminosity = 255;
+int Utils::maxLuminosity = 150;
 
 std::chrono::milliseconds Utils::getTimeSinceEpoch(){
     return std::chrono::duration_cast< std::chrono::milliseconds >(

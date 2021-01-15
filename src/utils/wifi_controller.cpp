@@ -1,5 +1,5 @@
 #include "headers/wifi_controller.hpp"
-#include "headers/leds_controller.hpp"
+#include "leds/leds_controller.hpp"
 
 WifiController::WifiController(WiFiServer* wifiServer, WiFiMulti* wifiMulti, WiFiManager* wifiManager){
     this->wifiServer = wifiServer;
@@ -106,6 +106,9 @@ void WifiController::scanClient(){
               break;
             case Flags::A_STOP_AUTO_STROBOSCOPE:
               ledsController->getAnimationMode()->setStroboscopeAutoStop(buf[1] == 1);
+              break;
+            case Flags::A_STROBOSCOPE_LUMINOSITY:
+              ledsController->getAnimationMode()->setStroboscopeLuminosity(buf[1]);
               break;
             
             //CINEKAVE

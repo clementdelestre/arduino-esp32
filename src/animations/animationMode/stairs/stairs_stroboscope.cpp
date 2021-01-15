@@ -1,5 +1,5 @@
 #include "headers/stairs_stroboscope.hpp"
-#include "../../../headers/leds_controller.hpp"
+#include "../../../leds/leds_controller.hpp"
 
 StairsStroboscope::StairsStroboscope(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){
       
@@ -10,13 +10,17 @@ StairsStroboscope::StairsStroboscope(LedsController* ledsController, Microphone*
 
 void StairsStroboscope::animationContent(){
     if(progress <1){
-        ledsController->getStairsLeds()->ClearTo(RgbColor().LinearBlend(0, color, progress));
-        ledsController->getStairsLeds()->Show();
+        ledsController->getStairsLeds()->clearTo(RgbColor().LinearBlend(0, color, progress));
+        ledsController->getStairsLeds()->show();
         progress+=0.05;
+    }
+
+    if(progress == 1){
+        refreshMs = std::chrono::milliseconds(100); ;
     }
 }
 
 void StairsStroboscope::init(){
     progress = 0;
-    color = RgbColor(50, 50, 50);
+    color = RgbColor(30, 30, 30);
 }

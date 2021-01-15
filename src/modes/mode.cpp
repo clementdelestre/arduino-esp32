@@ -1,6 +1,6 @@
 #include "headers/mode.hpp"
 
-#include "../headers/leds_controller.hpp"
+#include "../leds/leds_controller.hpp"
 
 
 Mode::Mode(LedsController *LedsController){

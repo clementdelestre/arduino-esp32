@@ -1,6 +1,6 @@
 #include "headers/power_off.hpp"
 
-#include "../headers/leds_controller.hpp"
+#include "../leds/leds_controller.hpp"
 
 PowerOffMode::PowerOffMode(LedsController* ledsController) : Mode(ledsController){
      this->ledsController = ledsController;
@@ -8,11 +8,11 @@ PowerOffMode::PowerOffMode(LedsController* ledsController) : Mode(ledsController
 }
 
 void PowerOffMode::startMode(){
-     ledsController->getKaveLeds()->ClearTo(0);
-     ledsController->getKaveLeds()->Show();
+     ledsController->getKaveLeds()->clearTo(0);
+     ledsController->getKaveLeds()->show();
 
-     ledsController->getStairsLeds()->ClearTo(0);
-     ledsController->getStairsLeds()->Show();
+     ledsController->getStairsLeds()->clearTo(0);
+     ledsController->getStairsLeds()->show();
 }
 
 void PowerOffMode::displayMode(){

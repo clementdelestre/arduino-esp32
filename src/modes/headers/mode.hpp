@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#include <NeoPixelBus.h>
 #include "../../utils/headers/utils.hpp"
 
 #ifndef MODE_H_INCLUDED

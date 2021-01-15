@@ -1,5 +1,5 @@
 #include "headers/kave_three_bars.hpp"
-#include "../../../headers/leds_controller.hpp"
+#include "../../../leds/leds_controller.hpp"
 
 KaveThreeBars::KaveThreeBars(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){  
     refreshMs = std::chrono::milliseconds(10);   
@@ -18,7 +18,7 @@ KaveThreeBars::KaveThreeBars(LedsController* ledsController, Microphone* microph
 void KaveThreeBars::animationContent(){    
   
     //LOW FREQUENCY   
-    int activeLedTargetLow = ledsController->getKaveLeds()->PixelCount()*microphone->getLowFrequency()/6;
+    int activeLedTargetLow = ledsController->getKaveLeds()->getLength()*microphone->getLowFrequency()/6;
 
     if(ledActivatedLow <= activeLedTargetLow){
         ledActivatedLow+=1;
@@ -26,22 +26,22 @@ void KaveThreeBars::animationContent(){
         ledActivatedLow-=1;
     }
 
-    for(int x = ledsController->getKaveLeds()->PixelCount()/6; x>=ledActivatedLow; x--){
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2+x, 0);    
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2-x, 0);   
+    for(int x = ledsController->getKaveLeds()->getLength()/6; x>=ledActivatedLow; x--){
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2+x, 0);    
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2-x, 0);   
     }
     
     RgbColor tempColorLow = RgbColor().LinearBlend(currentColorLow, targetColorLow, progressColor);
     for(int x = 0;x<ledActivatedLow;x++){      
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2+x, tempColorLow);
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2-x, tempColorLow);
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2+x, tempColorLow);
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2-x, tempColorLow);
     }
 
     //fix
-    ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/2, tempColorLow);
+    ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2, tempColorLow);
 
     //HIGH FREQUENCY
-    int activeLedTargetHigh = ledsController->getKaveLeds()->PixelCount()*microphone->getHighFrequency()/6;
+    int activeLedTargetHigh = ledsController->getKaveLeds()->getLength()*microphone->getHighFrequency()/6;
 
     if(ledActivatedHigh <= activeLedTargetHigh){
         ledActivatedHigh+=1;
@@ -49,26 +49,26 @@ void KaveThreeBars::animationContent(){
         ledActivatedHigh-=1;
     }
 
-    for(int x = ledsController->getKaveLeds()->PixelCount()/6; x>=ledActivatedHigh; x--){
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/6+x, 0);    
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/6-x, 0);
+    for(int x = ledsController->getKaveLeds()->getLength()/6; x>=ledActivatedHigh; x--){
+        // ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/6+x, 0);    
+        // ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/6-x, 0);
 
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()*5/6+x, 0);    
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()*5/6-x, 0);   
+        // ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()*5/6+x, 0);    
+        // ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()*5/6-x, 0);   
     }
     
     RgbColor tempColorHigh = RgbColor().LinearBlend(currentColorHigh, targetColorHigh, progressColor);
     for(int x = 0;x<ledActivatedHigh;x++){        
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/6+x, tempColorHigh);
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/6-x, tempColorHigh);
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/6+x, tempColorHigh);
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/6-x, tempColorHigh);
 
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()*5/6+x, tempColorHigh);
-        ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()*5/6-x, tempColorHigh);
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()*5/6+x, tempColorHigh);
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()*5/6-x, tempColorHigh);
     }
 
     //fix
-    ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()/6, tempColorHigh);
-    ledsController->getKaveLeds()->SetPixelColor(ledsController->getKaveLeds()->PixelCount()*5/6, tempColorHigh);
+    ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/6, tempColorHigh);
+    ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()*5/6, tempColorHigh);
 
     //GENERAL
     progressColor+=0.005;
@@ -83,11 +83,11 @@ void KaveThreeBars::animationContent(){
         progressColor = 0;
     }
  
-    ledsController->getKaveLeds()->Show();
+    ledsController->getKaveLeds()->show();
 
 }
 
 void KaveThreeBars::init(){
-    ledsController->getKaveLeds()->ClearTo(0);
-    ledsController->getKaveLeds()->Show();
+    ledsController->getKaveLeds()->clearTo(0);
+    ledsController->getKaveLeds()->show();
 }
