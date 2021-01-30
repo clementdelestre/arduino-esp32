@@ -21,7 +21,7 @@ void KaveTransitionSplash::animationContent(){
             ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2+x, ledColor);
             ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2-x, ledColor);  
         } 
-        splashPos+=1;
+        splashPos+=2;
     } else {
         for(int x = 0;x<ledsController->getKaveLeds()->getLength();x++){
 

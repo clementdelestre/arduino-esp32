@@ -11,6 +11,7 @@ class KaveScroll : public AnimationConstructor {
 
     private:
         std::chrono::milliseconds lastSpawn;
+        int length = 16; //must be a multiple of 2
 
     public:
         KaveScroll(LedsController* ledsController, Microphone* microphone, int flag);

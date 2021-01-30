@@ -17,7 +17,8 @@ AnimationConstructor::AnimationConstructor(LedsController* ledsController, Micro
 }
 
 void AnimationConstructor::init(){
-    
+    ledsController->getKaveLeds()->clearTo(0);
+    ledsController->getKaveLeds()->show();
 }
 
 void AnimationConstructor::eventClose(){

@@ -3,7 +3,7 @@
 
 KaveCenteredBar::KaveCenteredBar(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){  
 
-    refreshMs = std::chrono::milliseconds(20);    
+    refreshMs = std::chrono::milliseconds(10);    
 
     ledActivated = 0;
     progressColor = 0;
@@ -13,7 +13,7 @@ KaveCenteredBar::KaveCenteredBar(LedsController* ledsController, Microphone* mic
 
 void KaveCenteredBar::animationContent(){    
   
-    int activeLedTarget = ledsController->getKaveLeds()->getLength()*microphone->getMediumFrequency()/2;
+    int activeLedTarget = ledsController->getKaveLeds()->getLength()*microphone->getLowFrequency()/2;
 
     if(activeLedTarget == 0) activeLedTarget = 1;
 
@@ -47,9 +47,9 @@ void KaveCenteredBar::animationContent(){
     ledsController->getKaveLeds()->show();
 
     if(ledActivated <= activeLedTarget){
-        refreshMs = std::chrono::milliseconds(20);
+        refreshMs = std::chrono::milliseconds(10);
     } else {
-        refreshMs = std::chrono::milliseconds(40);
+        refreshMs = std::chrono::milliseconds(20);
     }
 
 }

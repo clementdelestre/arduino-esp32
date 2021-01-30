@@ -4,10 +4,10 @@
 /////  LEDS KAVE  /////
 
 #define KAVE_LED_PIN 26
-#define KAVE_LED_COUNT 39 //371
+#define KAVE_LED_COUNT 371 //371 - 39
 
 #define STAIRS_LED_PIN 27
-#define STAIRS_LED_COUNT 39 //104
+#define STAIRS_LED_COUNT 104 //104
 
 /////  END LEDS STAIRS  /////
 
@@ -31,7 +31,7 @@ LedsController::LedsController(WifiController* wifiController){
     currentMode = wifiLoaderMode;
 
     stairsSensorValue = false;
-    useStairsSensor = false;
+    useStairsSensor = true;
 }
 
 void LedsController::init(){

@@ -10,11 +10,12 @@ class LedsController;
 class KaveSlide : public AnimationConstructor {
 
     private:
-        std::chrono::seconds lastMove;
+        std::chrono::milliseconds lastMove;
 
     public:
         KaveSlide(LedsController* ledsController, Microphone* microphone, int flag);
         void animationContent() override;
+        void init() override;
 
 };
 

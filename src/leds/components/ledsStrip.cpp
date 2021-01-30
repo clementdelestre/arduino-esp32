@@ -183,7 +183,7 @@ void LedsStrip::rotateRight(int i){
 void LedsStrip::shiftLeft(int i){
 
 	for(int x = 0;x<this->numpixels;x++){		
-		if(x+i>=this->numpixels){
+		if(x+i>this->numpixels){
 			setPixelColor(x, 0);
 		} else {
 			setPixelColor(x, getPixelColor(x+i));

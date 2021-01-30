@@ -4,27 +4,20 @@
 KaveSlide::KaveSlide(LedsController* ledsController, Microphone* microphone, int flag) : AnimationConstructor(ledsController, microphone, flag){  
     refreshMs = std::chrono::milliseconds(13);   
 
-    lastMove = std::chrono::duration_cast< std::chrono::seconds >(
-        Utils::getTimeSinceEpoch()
-    );
-
-    ledsController->getKaveLeds()->clearTo(Utils::getRandomColor());
-    ledsController->getKaveLeds()->show();
+    lastMove = Utils::getTimeSinceEpoch();
 }
 
 void KaveSlide::animationContent(){    
   
     int ledsCount = ledsController->getKaveLeds()->getLength()/6;
 
-    if(microphone->getMediumFrequency() > 0.85 && lastMove+std::chrono::seconds(1)<Utils::getTimeSinceEpoch()){
+    if(microphone->getMediumFrequency() > 0.85 && lastMove+std::chrono::seconds(2)<Utils::getTimeSinceEpoch()){
         RgbColor color = Utils::getRandomColor();
         ledsController->getKaveLeds()->setPixelColor(ledsCount, color);
         ledsController->getKaveLeds()->setPixelColor(3*ledsCount, color);
         ledsController->getKaveLeds()->setPixelColor(5*ledsCount, color);
 
-        lastMove = std::chrono::duration_cast< std::chrono::seconds >(
-            Utils::getTimeSinceEpoch()
-        );
+        lastMove = Utils::getTimeSinceEpoch();
     }
 
     
@@ -41,4 +34,9 @@ void KaveSlide::animationContent(){
  
     ledsController->getKaveLeds()->show();
 
+}
+
+void KaveSlide::init(){
+    ledsController->getKaveLeds()->clearTo(Utils::getRandomColor());
+    ledsController->getKaveLeds()->show();
 }

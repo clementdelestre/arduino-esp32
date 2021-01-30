@@ -9,14 +9,14 @@ KaveScroll::KaveScroll(LedsController* ledsController, Microphone* microphone, i
 
 void KaveScroll::animationContent(){    
   
-    if(((microphone->getMediumFrequency()>0.7 || microphone->getLowFrequency()>0.7) && lastSpawn+std::chrono::milliseconds(300) < Utils::getTimeSinceEpoch()) || lastSpawn+std::chrono::milliseconds(2000) < Utils::getTimeSinceEpoch()){
+    if((microphone->getLowFrequency()>0.75 && lastSpawn+std::chrono::milliseconds(500) < Utils::getTimeSinceEpoch()) || lastSpawn+std::chrono::milliseconds(2000) < Utils::getTimeSinceEpoch()){
         float progress = 0;
         RgbColor targetColor = getColorWithDefault(Utils::getFixedRandomColor());
-        for(int x = 0;x<10;x++){        
+        for(int x = 0;x<this->length;x++){        
             RgbColor color = RgbColor().LinearBlend(RgbColor(0, 0, 0), targetColor, progress);
             ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2 + x, color);
             ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/2 - x, color);
-            progress = (x < 5) ? progress+0.2 : progress-0.2;
+            progress = (x < this->length/2) ? x/(this->length/2) : 1-(x-this->length/2)/(this->length/2);
         }
 
         lastSpawn = Utils::getTimeSinceEpoch();

@@ -42,9 +42,9 @@ void KaveMovingBars::animationContent(){
     RgbColor activeColor = RgbColor().LinearBlend(currentColor, targetColor, progressColor);
 
     if(ledActivated <= activeLedTarget){
-        ledActivated+=1;
+        ledActivated+=2;
     } else {
-        ledActivated-=1;
+        ledActivated-=2;
     }
     
     for(int x = 0;x<ledActivated;x++){

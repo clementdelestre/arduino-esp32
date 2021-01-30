@@ -117,10 +117,6 @@ void AnimationMode::setKaveAnimation(int kaveAnimation){
      case AnimationKaveLabel::KAVE_OFF:
           currentKaveAnimation = new KaveOff(ledsController, microphone, kaveAnimation);
           break;
-     case AnimationKaveLabel::KAVE_WHITE_DOTS:
-          currentKaveAnimation = new WhiteDots(ledsController, microphone, kaveAnimation);
-          break;
-
      case AnimationKaveLabel::KAVE_SIX_BARS_COLORED:
           currentKaveAnimation = new SixBarsColored(ledsController, microphone, kaveAnimation);
           break;

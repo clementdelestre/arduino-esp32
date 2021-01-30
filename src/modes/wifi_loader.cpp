@@ -24,6 +24,7 @@ void WifiLoaderMode::startMode(){
 void WifiLoaderMode::displayMode(){
 
      if(restartAnim){
+          ledsController->getKaveLeds()->clear();
           for(int x = 0;x<ledsController->getKaveLeds()->getLength();x++){
               ledsController->getKaveLeds()->setPixelColor(x, restartColor);
           }
@@ -34,20 +35,18 @@ void WifiLoaderMode::displayMode(){
           return;
      }
 
-    if(lastAnim + std::chrono::seconds(1) < Utils::getTimeSinceEpoch()){
+     if(lastAnim + std::chrono::milliseconds(1500) < Utils::getTimeSinceEpoch()){
           for(int x = 0;x<lengthBar;x++){
               ledsController->getKaveLeds()->setPixelColor(x, color);
           }
 
-          ledsController->getKaveLeds()->show();
           lastAnim = std::chrono::duration_cast< std::chrono::seconds >(
                Utils::getTimeSinceEpoch()
           );
-    }
 
-     for(int x = ledsController->getKaveLeds()->getLength();x>=0;x--){
-          ledsController->getKaveLeds()->setPixelColor(x, ledsController->getKaveLeds()->getPixelColor(x-1));
+          ledsController->getKaveLeds()->show();
      }
+     ledsController->getKaveLeds()->shiftRight(1);
 
      ledsController->getKaveLeds()->show();
 

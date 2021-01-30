@@ -17,6 +17,8 @@ class KaveGradientFromEdges : public AnimationConstructor {
     public:
         KaveGradientFromEdges(LedsController* ledsController, Microphone* microphone, int flag);
         void animationContent() override;
+        void init() override;
+        void run();
 
 };
 

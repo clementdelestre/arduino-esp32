@@ -6,7 +6,6 @@
 #include "../../utils/headers/microphone.hpp"
 
 #include "../../animations/animationMode/kave/headers/kave_off.hpp"
-#include "../../animations/animationMode/kave/headers/kave_white_dots.hpp"
 #include "../../animations/animationMode/kave/headers/kave_six_bars_colored.hpp"
 #include "../../animations/animationMode/kave/headers/kave_centered_bar.hpp"
 #include "../../animations/animationMode/kave/headers/kave_change_color.hpp"
@@ -39,7 +38,6 @@ enum AnimationKaveLabel {
     KAVE_CHANGE_COLOR = 1,   
     KAVE_STROBOSCOPE = 2,
     KAVE_CENTERED_BAR = 3,
-    KAVE_WHITE_DOTS = 4,
     KAVE_STROBODOTS = 5,
     KAVE_COLORED_BARS = 6,
     KAVE_GRADIENT_FROM_EDGES = 7,
@@ -78,7 +76,6 @@ class AnimationMode : public Mode {
         AnimationConstructor* currentKaveAnimation;
 
         const  std::vector<int> listAllKaveAnimation = {
-            KAVE_WHITE_DOTS,
             KAVE_SIX_BARS_COLORED,
             KAVE_CENTERED_BAR,
             KAVE_CHANGE_COLOR,
@@ -108,7 +105,6 @@ class AnimationMode : public Mode {
         };
 
         const  std::vector<int> categoryAnimationHard = {
-            KAVE_WHITE_DOTS,
             KAVE_CHANGE_COLOR,
             KAVE_STROBODOTS,
             KAVE_COLORED_BARS,
@@ -122,7 +118,6 @@ class AnimationMode : public Mode {
         };
 
         const  std::vector<int> categoryAnimationVeryHard = {
-            KAVE_WHITE_DOTS,
             KAVE_STROBODOTS,
             KAVE_COLORED_BARS,
             KAVE_SCROLL,

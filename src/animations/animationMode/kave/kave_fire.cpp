@@ -12,14 +12,16 @@ KaveFire::KaveFire(LedsController* ledsController, Microphone* microphone, int f
 
 void KaveFire::animationContent(){    
   
-    float micVal = microphone->getMediumFrequency();
+    float micVal = microphone->getLowFrequency();
     
 
-    ledsController->getKaveLeds()->shiftRight(1);
+    ledsController->getKaveLeds()->shiftRight(2);
 
-    if(micVal>0.3){
-        ledsController->getKaveLeds()->setPixelColor(0, RgbColor().LinearBlend(currentColor, targetColor, progressColor).Dim(255*micVal));
-    }
+    
+    RgbColor color = RgbColor().LinearBlend(currentColor, targetColor, progressColor).Dim(255*micVal);
+    ledsController->getKaveLeds()->setPixelColor(0, color);
+    ledsController->getKaveLeds()->setPixelColor(1, color);
+    
     
     
     for(int x = 0;x<ledsController->getKaveLeds()->getLength();x++){

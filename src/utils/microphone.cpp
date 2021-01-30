@@ -20,7 +20,7 @@ Microphone::Microphone(){
 
 void Microphone::startThread(){
     bool calibration = false;
-    calibrationTime = Utils::getTimeSinceEpoch()-std::chrono::seconds(24);
+    calibrationTime = Utils::getTimeSinceEpoch()-std::chrono::seconds(15);
 
     while(*running){
         float low_frequency = 0;
@@ -39,16 +39,16 @@ void Microphone::startThread(){
         FFT.ComplexToMagnitude(vReal, vImag, SAMPLES);
 
         //for (int i = 2; i < (SAMPLES/2); i++){ 
-        for (int i = 2; i < 60; i++){ 
+        for (int i = 2; i < (SAMPLES/2); i++){ 
             int val = vReal[i];
 
             if(i<=8 && val > 700){
                 low_frequency+=val;
-            } else if(i>8 && val > 300) {
+            } else if(i>8 && val > 700) {
                 high_frequency+=val;
             }
 
-            if(val > 500){
+            if(val > 600){
                 medium_frequency+=val;
             }
  
@@ -80,7 +80,7 @@ void Microphone::startThread(){
         percent_medium_frequency = (medium_frequency/max_medium_frequency > 1) ? 1 : medium_frequency/max_medium_frequency;
 
         //Serial.println(percent_low_frequency);
-        delay(5);
+        delay(1);
     }
 
     vTaskDelete(microphoneTask);

@@ -50,11 +50,11 @@ void KaveThreeBars::animationContent(){
     }
 
     for(int x = ledsController->getKaveLeds()->getLength()/6; x>=ledActivatedHigh; x--){
-        // ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/6+x, 0);    
-        // ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/6-x, 0);
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/6+x, 0);    
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()/6-x, 0);
 
-        // ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()*5/6+x, 0);    
-        // ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()*5/6-x, 0);   
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()*5/6+x, 0);    
+        ledsController->getKaveLeds()->setPixelColor(ledsController->getKaveLeds()->getLength()*5/6-x, 0);   
     }
     
     RgbColor tempColorHigh = RgbColor().LinearBlend(currentColorHigh, targetColorHigh, progressColor);

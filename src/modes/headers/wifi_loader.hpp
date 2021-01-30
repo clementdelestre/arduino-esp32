@@ -10,8 +10,8 @@ class LedsController;
 class WifiLoaderMode : public Mode {
 
     private:
-        std::chrono::seconds lastAnim;
-        const int lengthBar = 10;
+        std::chrono::milliseconds lastAnim;
+        const int lengthBar = 15;
         const RgbColor color = RgbColor(150, 150, 150);
         const RgbColor restartColor = RgbColor(150, 0, 0);
 
