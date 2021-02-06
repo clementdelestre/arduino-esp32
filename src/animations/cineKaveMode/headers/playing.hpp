@@ -9,6 +9,11 @@ class LedsController;
 
 class PlayingCineKaveAnim : public AnimationConstructor {
 
+    private:
+        std::chrono::milliseconds lastUpdate;
+        RgbColor currentColor;
+        RgbColor targetColor;
+
     public:
         PlayingCineKaveAnim(LedsController* ledsController);
         void animationContent() override;

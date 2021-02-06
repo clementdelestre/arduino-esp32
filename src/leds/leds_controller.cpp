@@ -4,7 +4,7 @@
 /////  LEDS KAVE  /////
 
 #define KAVE_LED_PIN 26
-#define KAVE_LED_COUNT 371 //371 - 39
+#define KAVE_LED_COUNT 300 //371 //371 - 39
 
 #define STAIRS_LED_PIN 27
 #define STAIRS_LED_COUNT 104 //104
