@@ -4,8 +4,9 @@
 #include <ESPmDNS.h>
 #include <WiFiManager.h>
 
-#include "utils/headers/wifi_controller.hpp"
+#include "network/wifi/wifi_controller.hpp"
 #include "leds/leds_controller.hpp"
+#include "storage/nvs.hpp"
 
 
 //BUTTONS
@@ -23,9 +24,13 @@ WiFiManager wm;
 
 //END WIFI
 
+//Storage
+NVSStorage* nvsStorage;
+//END STORAGE
+
 LedsController* ledsController;
 
-char ptrTaskList[250];
+// char ptrTaskList[250];
 
 void WiFiStationConnected(WiFiEvent_t event, WiFiEventInfo_t info){
     ESP.restart();
@@ -33,9 +38,13 @@ void WiFiStationConnected(WiFiEvent_t event, WiFiEventInfo_t info){
 
 void setup() {
   Serial.begin(115200);
-  
+
+
+  nvsStorage = new NVSStorage();
+  nvsStorage->init();
+
   wifiController = new WifiController(&wifiServer, &wifiMulti, &wm);
-  ledsController = new LedsController(wifiController);
+  ledsController = new LedsController(wifiController, nvsStorage);
 
   wifiController->setLedsController(ledsController);
   ledsController->init();

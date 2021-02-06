@@ -11,8 +11,9 @@
 
 /////  END LEDS STAIRS  /////
 
-LedsController::LedsController(WifiController* wifiController){
+LedsController::LedsController(WifiController* wifiController, NVSStorage* storage){
     this->wifiController = wifiController;
+    this->nvsStorage = storage;
 
     kaveStrip = new LedsStrip(KAVE_LED_COUNT, KAVE_LED_PIN, 0);
     stairsStrip = new LedsStrip(STAIRS_LED_COUNT, STAIRS_LED_PIN, 1);
@@ -23,6 +24,7 @@ LedsController::LedsController(WifiController* wifiController){
     animationMode = new AnimationMode(this);
     cineKaveMode = new CineKaveMode(this);
     offMode = new PowerOffMode(this);
+    transitionMode = new TransitionMode(this);
 
     //to load initial animation
     animationMode->init();
@@ -84,6 +86,9 @@ void LedsController::setMode(int modeLabel){
         case ModeLabel::off:
             currentMode = offMode;
             break;
+        case ModeLabel::transition:
+            currentMode = transitionMode;
+            break;
         }
 
         currentMode->startMode();
@@ -123,22 +128,30 @@ bool LedsController::canShowStairs(){
 //GET MODES
 
 Mode* LedsController::getCurrentMode(){
-    return currentMode;
+    return this->currentMode;
 }
 
 WifiLoaderMode* LedsController::getWifiLoaderMode(){
-    return wifiLoaderMode;
+    return this->wifiLoaderMode;
 }
 
 SimpleColorsMode* LedsController::getSimpleColorMode(){
-    return simpleColorMode;
+    return this->simpleColorMode;
 }
 
 AnimationMode* LedsController::getAnimationMode(){
-    return animationMode;
+    return this->animationMode;
 }
 
 CineKaveMode* LedsController::getCineKaveMode(){
-    return cineKaveMode;
+    return this->cineKaveMode;
+}
+
+TransitionMode* LedsController::getTransitionMode(){
+    return this->transitionMode;
+}
+
+NVSStorage* LedsController::getNVSStorage(){
+    return this->nvsStorage;
 }
 

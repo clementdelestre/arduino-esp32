@@ -10,8 +10,6 @@ class LedsController;
 class SimpleColorsMode : public Mode {
 
     private:
-        bool isAnimated;
-        int animationSpeed;
         RgbColor animInitColor;
 
         RgbColor kaveCurrentColor;
@@ -20,10 +18,6 @@ class SimpleColorsMode : public Mode {
         //stairs enable
         float posStairsColor;
         bool isStairsDisplayed;
-        
-        //Animation
-        float posColor;
-        RgbColor targetColor;
 
     public:
         SimpleColorsMode(LedsController* ledsController);
@@ -34,9 +28,6 @@ class SimpleColorsMode : public Mode {
         void setStairsColor(RgbColor color);
 
         void sendModeData() override;
-
-        void changeAnimated(bool animated);
-        void changeAnimationSpeed(int speed);
 
 };
 
